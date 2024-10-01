@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Pan American World Airways",
+    "Cash Balance": 5000000,
+    "Reputation": 9,
+    "CountryCode": "US"
+  },
+  {
+    "Name": "Trans World Airlines (TWA)",
+    "Cash Balance": 4500000,
+    "Reputation": 8,
+    "CountryCode": "US"
+  },
+  {
+    "Name": "British Overseas Airways Corporation (BOAC)",
+    "Cash Balance": 4000000,
+    "Reputation": 8,
+    "CountryCode": "GB"
+  },
+  {
+    "Name": "American Airlines",
+    "Cash Balance": 4800000,
+    "Reputation": 9,
+    "CountryCode": "US"
+  },
+  {
+    "Name": "KLM Royal Dutch Airlines",
+    "Cash Balance": 4200000,
+    "Reputation": 8,
+    "CountryCode": "NL"
+  },
+  {
+    "Name": "Air France",
+    "Cash Balance": 4100000,
+    "Reputation": 8,
+    "CountryCode": "FR"
+  },
+  {
+    "Name": "Lufthansa",
+    "Cash Balance": 3500000,
+    "Reputation": 7,
+    "CountryCode": "DE"
+  },
+  {
+    "Name": "Qantas Empire Airways",
+    "Cash Balance": 3700000,
+    "Reputation": 8,
+    "CountryCode": "AU"
+  },
+  {
+    "Name": "Scandinavian Airlines System (SAS)",
+    "Cash Balance": 3600000,
+    "Reputation": 7,
+    "CountryCode": "SE"
+  },
+  {
+    "Name": "United Airlines",
+    "Cash Balance": 4700000,
+    "Reputation": 9,
+    "CountryCode": "US"
+  }
+]

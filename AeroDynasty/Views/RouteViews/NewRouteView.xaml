@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="AeroDynasty.Views.RouteViews.NewRouteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AeroDynasty.Views.RouteViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300" d:Background="white">
+    <Grid Margin="10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <TextBlock Text="New Route" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Origin Airport"/>
+            <ComboBox ItemsSource="{Binding OriginAirports}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedOriginAirport}"/>
+
+            <TextBlock Text="Destination Airport"/>
+            <ComboBox ItemsSource="{Binding DestinationAirports}" IsEnabled="{Binding DestinationAirportsEnabled}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDestinationAirport}"/>
+
+            <TextBlock Text="Airline"/>
+            <ComboBox ItemsSource="{Binding Airlines}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAirline}"/>
+
+            <TextBlock Text="Ticketprice"/>
+            <TextBox DataContext="{Binding Ticketprice}" />
+
+            <TextBlock Text="Frequency"/>
+            <TextBox DataContext="{Binding Frequency}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Save" Command="{Binding ButtonSaveCommand}"/>
+            <Button Content="Cancel" Command="{Binding ButtonCancelCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

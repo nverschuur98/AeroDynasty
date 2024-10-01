@@ -1,0 +1,962 @@
+[
+  {
+    "Name": "Afghanistan",
+    "ISOCode": "AF",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Albania",
+    "ISOCode": "AL",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Algeria",
+    "ISOCode": "DZ",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Andorra",
+    "ISOCode": "AD",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Angola",
+    "ISOCode": "AO",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Argentina",
+    "ISOCode": "AR",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Australia",
+    "ISOCode": "AU",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Austria",
+    "ISOCode": "AT",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Bahamas",
+    "ISOCode": "BS",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Bahrain",
+    "ISOCode": "BH",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Bangladesh",
+    "ISOCode": "BD",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Barbados",
+    "ISOCode": "BB",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Belarus",
+    "ISOCode": "BY",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Belgium",
+    "ISOCode": "BE",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Belize",
+    "ISOCode": "BZ",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Benin",
+    "ISOCode": "BJ",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Bhutan",
+    "ISOCode": "BT",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Bolivia",
+    "ISOCode": "BO",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Bosnia and Herzegovina",
+    "ISOCode": "BA",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Botswana",
+    "ISOCode": "BW",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Brazil",
+    "ISOCode": "BR",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Brunei",
+    "ISOCode": "BN",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Bulgaria",
+    "ISOCode": "BG",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Burkina Faso",
+    "ISOCode": "BF",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Burundi",
+    "ISOCode": "BI",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Cambodia",
+    "ISOCode": "KH",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Cameroon",
+    "ISOCode": "CM",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Canada",
+    "ISOCode": "CA",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Cape Verde",
+    "ISOCode": "CV",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Central African Republic",
+    "ISOCode": "CF",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Chad",
+    "ISOCode": "TD",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Chile",
+    "ISOCode": "CL",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "China",
+    "ISOCode": "CN",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Colombia",
+    "ISOCode": "CO",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Comoros",
+    "ISOCode": "KM",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Congo (Brazzaville)",
+    "ISOCode": "CG",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Congo (Kinshasa)",
+    "ISOCode": "CD",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Costa Rica",
+    "ISOCode": "CR",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Croatia",
+    "ISOCode": "HR",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Cuba",
+    "ISOCode": "CU",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Cyprus",
+    "ISOCode": "CY",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Czech Republic",
+    "ISOCode": "CZ",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Denmark",
+    "ISOCode": "DK",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Djibouti",
+    "ISOCode": "DJ",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Dominica",
+    "ISOCode": "DM",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Dominican Republic",
+    "ISOCode": "DO",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Ecuador",
+    "ISOCode": "EC",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Egypt",
+    "ISOCode": "EG",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "El Salvador",
+    "ISOCode": "SV",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Equatorial Guinea",
+    "ISOCode": "GQ",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Eritrea",
+    "ISOCode": "ER",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Estonia",
+    "ISOCode": "EE",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Eswatini",
+    "ISOCode": "SZ",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Ethiopia",
+    "ISOCode": "ET",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Fiji",
+    "ISOCode": "FJ",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Finland",
+    "ISOCode": "FI",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "France",
+    "ISOCode": "FR",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Gabon",
+    "ISOCode": "GA",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Gambia",
+    "ISOCode": "GM",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Georgia",
+    "ISOCode": "GE",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Germany",
+    "ISOCode": "DE",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Ghana",
+    "ISOCode": "GH",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Greece",
+    "ISOCode": "GR",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Grenada",
+    "ISOCode": "GD",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Guatemala",
+    "ISOCode": "GT",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Guinea",
+    "ISOCode": "GN",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Guinea-Bissau",
+    "ISOCode": "GW",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Guyana",
+    "ISOCode": "GY",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Haiti",
+    "ISOCode": "HT",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Honduras",
+    "ISOCode": "HN",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Hong Kong",
+    "ISOCode": "HK",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Hungary",
+    "ISOCode": "HU",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Iceland",
+    "ISOCode": "IS",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "India",
+    "ISOCode": "IN",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Indonesia",
+    "ISOCode": "ID",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Iran",
+    "ISOCode": "IR",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Iraq",
+    "ISOCode": "IQ",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Ireland",
+    "ISOCode": "IE",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Israel",
+    "ISOCode": "IL",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Italy",
+    "ISOCode": "IT",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Jamaica",
+    "ISOCode": "JM",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Japan",
+    "ISOCode": "JP",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Jordan",
+    "ISOCode": "JO",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Kazakhstan",
+    "ISOCode": "KZ",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Kenya",
+    "ISOCode": "KE",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Kiribati",
+    "ISOCode": "KI",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Kuwait",
+    "ISOCode": "KW",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Kyrgyzstan",
+    "ISOCode": "KG",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Laos",
+    "ISOCode": "LA",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Latvia",
+    "ISOCode": "LV",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Lebanon",
+    "ISOCode": "LB",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Lesotho",
+    "ISOCode": "LS",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Liberia",
+    "ISOCode": "LR",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Libya",
+    "ISOCode": "LY",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Liechtenstein",
+    "ISOCode": "LI",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Lithuania",
+    "ISOCode": "LT",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Luxembourg",
+    "ISOCode": "LU",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Madagascar",
+    "ISOCode": "MG",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Malawi",
+    "ISOCode": "MW",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Malaysia",
+    "ISOCode": "MY",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Maldives",
+    "ISOCode": "MV",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Mali",
+    "ISOCode": "ML",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Malta",
+    "ISOCode": "MT",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Marshall Islands",
+    "ISOCode": "MH",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Mauritania",
+    "ISOCode": "MR",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Mauritius",
+    "ISOCode": "MU",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Mexico",
+    "ISOCode": "MX",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Micronesia",
+    "ISOCode": "FM",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Moldova",
+    "ISOCode": "MD",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Monaco",
+    "ISOCode": "MC",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Mongolia",
+    "ISOCode": "MN",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Montenegro",
+    "ISOCode": "ME",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Morocco",
+    "ISOCode": "MA",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Mozambique",
+    "ISOCode": "MZ",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Myanmar",
+    "ISOCode": "MM",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Namibia",
+    "ISOCode": "NA",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Nauru",
+    "ISOCode": "NR",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Nepal",
+    "ISOCode": "NP",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Netherlands",
+    "ISOCode": "NL",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "New Zealand",
+    "ISOCode": "NZ",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Nicaragua",
+    "ISOCode": "NI",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Niger",
+    "ISOCode": "NE",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Nigeria",
+    "ISOCode": "NG",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "North Korea",
+    "ISOCode": "KP",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "North Macedonia",
+    "ISOCode": "MK",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Norway",
+    "ISOCode": "NO",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Oman",
+    "ISOCode": "OM",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Pakistan",
+    "ISOCode": "PK",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Palau",
+    "ISOCode": "PW",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Panama",
+    "ISOCode": "PA",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Papua New Guinea",
+    "ISOCode": "PG",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Paraguay",
+    "ISOCode": "PY",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Peru",
+    "ISOCode": "PE",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Philippines",
+    "ISOCode": "PH",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Poland",
+    "ISOCode": "PL",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Portugal",
+    "ISOCode": "PT",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Qatar",
+    "ISOCode": "QA",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Romania",
+    "ISOCode": "RO",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Russia",
+    "ISOCode": "RU",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Rwanda",
+    "ISOCode": "RW",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Saint Kitts and Nevis",
+    "ISOCode": "KN",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Saint Lucia",
+    "ISOCode": "LC",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Saint Vincent and the Grenadines",
+    "ISOCode": "VC",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Samoa",
+    "ISOCode": "WS",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "San Marino",
+    "ISOCode": "SM",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Sao Tome and Principe",
+    "ISOCode": "ST",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Saudi Arabia",
+    "ISOCode": "SA",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Senegal",
+    "ISOCode": "SN",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Serbia",
+    "ISOCode": "RS",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Seychelles",
+    "ISOCode": "SC",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Sierra Leone",
+    "ISOCode": "SL",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Singapore",
+    "ISOCode": "SG",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Slovakia",
+    "ISOCode": "SK",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Slovenia",
+    "ISOCode": "SI",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Solomon Islands",
+    "ISOCode": "SB",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Somalia",
+    "ISOCode": "SO",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "South Africa",
+    "ISOCode": "ZA",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "South Korea",
+    "ISOCode": "KR",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "South Sudan",
+    "ISOCode": "SS",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Spain",
+    "ISOCode": "ES",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Sri Lanka",
+    "ISOCode": "LK",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Sudan",
+    "ISOCode": "SD",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Suriname",
+    "ISOCode": "SR",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Sweden",
+    "ISOCode": "SE",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Switzerland",
+    "ISOCode": "CH",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Syria",
+    "ISOCode": "SY",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Taiwan",
+    "ISOCode": "TW",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Tajikistan",
+    "ISOCode": "TJ",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Tanzania",
+    "ISOCode": "TZ",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Thailand",
+    "ISOCode": "TH",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Timor-Leste",
+    "ISOCode": "TL",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Togo",
+    "ISOCode": "TG",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Tonga",
+    "ISOCode": "TO",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Trinidad and Tobago",
+    "ISOCode": "TT",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Tunisia",
+    "ISOCode": "TN",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Turkey",
+    "ISOCode": "TR",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Turkmenistan",
+    "ISOCode": "TM",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Tuvalu",
+    "ISOCode": "TV",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Uganda",
+    "ISOCode": "UG",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Ukraine",
+    "ISOCode": "UA",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "United Arab Emirates",
+    "ISOCode": "AE",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "United Kingdom",
+    "ISOCode": "GB",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "United States",
+    "ISOCode": "US",
+    "Continent": "NorthAmerica"
+  },
+  {
+    "Name": "Uruguay",
+    "ISOCode": "UY",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Uzbekistan",
+    "ISOCode": "UZ",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Vanuatu",
+    "ISOCode": "VU",
+    "Continent": "Australia"
+  },
+  {
+    "Name": "Vatican City",
+    "ISOCode": "VA",
+    "Continent": "Europe"
+  },
+  {
+    "Name": "Venezuela",
+    "ISOCode": "VE",
+    "Continent": "SouthAmerica"
+  },
+  {
+    "Name": "Vietnam",
+    "ISOCode": "VN",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Yemen",
+    "ISOCode": "YE",
+    "Continent": "Asia"
+  },
+  {
+    "Name": "Zambia",
+    "ISOCode": "ZM",
+    "Continent": "Africa"
+  },
+  {
+    "Name": "Zimbabwe",
+    "ISOCode": "ZW",
+    "Continent": "Africa"
+  }
+]

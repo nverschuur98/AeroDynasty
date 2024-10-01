@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="AeroDynasty.Views.RouteViews.ViewRouteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AeroDynasty.Views.RouteViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="250" d:Background="white">
+    <Grid Margin="10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="View Route " FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
+            <TextBlock Text="(EHAM) - (EGLL)" FontSize="14" FontWeight="Normal" Margin="0,0,0,10" Grid.Row="0" VerticalAlignment="Center" />
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Origin Airport"/>
+            <TextBlock Text="{Binding Route.Origin.ICAO_Name}"/>
+
+            <TextBlock Text="Destination Airport"/>
+            <TextBlock Text="{Binding Route.Destination.ICAO_Name}"/>
+
+            <TextBlock Text="Airline"/>
+            <TextBlock Text="{Binding Route.routeOwner.Name}"/>
+            
+            <TextBlock Text="Ticketprice"/>
+            <TextBlock Text="{Binding Route.ticketPrice, StringFormat={}{0:F2}}" />
+
+            <TextBlock Text="Frequency"/>
+            <TextBlock Text="{Binding Route.flightFrequency}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Edit" Command="{Binding ButtonEditCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
