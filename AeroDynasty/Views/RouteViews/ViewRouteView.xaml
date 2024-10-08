@@ -14,25 +14,25 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="auto">
             <TextBlock Text="View Route " FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
-            <TextBlock Text="(EHAM) - (EGLL)" FontSize="14" FontWeight="Normal" Margin="0,0,0,10" Grid.Row="0" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding Route.name}" FontSize="14" FontWeight="Normal" Margin="0,0,0,10" Grid.Row="0" VerticalAlignment="Center" />
         </StackPanel>
         
         <StackPanel Grid.Row="1">
             <TextBlock Text="Origin Airport"/>
             <TextBlock Text="{Binding Route.Origin.ICAO_Name}"/>
 
-            <TextBlock Text="Destination Airport"/>
+            <TextBlock Text="Destination Airport" Margin="0,10,0,0"/>
             <TextBlock Text="{Binding Route.Destination.ICAO_Name}"/>
 
-            <TextBlock Text="Airline"/>
+            <TextBlock Text="Airline" Margin="0,10,0,0"/>
             <TextBlock Text="{Binding Route.routeOwner.Name}"/>
-            
-            <TextBlock Text="Ticketprice"/>
+
+            <TextBlock Text="Ticketprice" Margin="0,10,0,0"/>
             <TextBlock Text="{Binding Route.ticketPrice, StringFormat={}{0:F2}}" />
 
-            <TextBlock Text="Frequency"/>
+            <TextBlock Text="Frequency" Margin="0,10,0,0"/>
             <TextBlock Text="{Binding Route.flightFrequency}"/>
         </StackPanel>
 

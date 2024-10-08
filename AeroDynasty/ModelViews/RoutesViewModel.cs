@@ -90,7 +90,7 @@ namespace AeroDynasty.ModelViews
         {
             // Here, implement your logic to open the route (e.g., set the CurrentDetailViewModel)
             // For example:
-            CurrentDetailViewModel = new ViewRouteViewModel(_gameViewModel, SelectedRoute);
+            CurrentDetailViewModel = new ViewRouteViewModel(_gameViewModel, this, SelectedRoute);
         }
 
         #endregion

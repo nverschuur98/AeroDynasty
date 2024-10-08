@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AeroDynasty.ModelViews.RouteViewModels
 {
@@ -12,17 +13,22 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         #region Declaring of variables
         //Private variables
         private GameViewModel _gameViewModel;
+        private RoutesViewModel _routesViewModel;
         private Route _route;
 
         //Commandos
+        public ICommand ButtonEditCommand { get; }
 
         #endregion
 
         //Constructor
-        public ViewRouteViewModel(GameViewModel gameViewModel, Route route)
+        public ViewRouteViewModel(GameViewModel gameViewModel, RoutesViewModel routesViewModel, Route route)
         {
             _gameViewModel = gameViewModel;
+            _routesViewModel = routesViewModel;
             Route = route;
+
+            ButtonEditCommand = new RelayCommand(ButtonEdit);
         }
 
         #region Construction of variables
@@ -39,7 +45,10 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         }
 
         //Setup commando handling
-
+        private void ButtonEdit()
+        {
+            _routesViewModel.CurrentDetailViewModel = new NewRouteViewModel(_gameViewModel, _routesViewModel, Route);
+        }
 
         #endregion
 

@@ -27,10 +27,10 @@
             <ComboBox ItemsSource="{Binding Airlines}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAirline}"/>
 
             <TextBlock Text="Ticketprice"/>
-            <TextBox DataContext="{Binding Ticketprice}" />
+            <TextBox Text="{Binding Ticketprice}" />
 
             <TextBlock Text="Frequency"/>
-            <TextBox DataContext="{Binding Frequency}"/>
+            <TextBox Text="{Binding Frequency}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">

@@ -18,12 +18,15 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         //Private variables
         private GameViewModel _gameViewModel;
         private RoutesViewModel _routesViewModel;
+        private Route _route;
+        private Route _referenceRoute;
+        private bool isEdit;
 
         private ICollectionView _originAirports;
         private Airport _selectedOriginAirport;
 
         private ICollectionView _destinationAirports;
-        private Airport _selectedDestinatonAirport;
+        private Airport _selectedDestinationAirport;
         private bool _destinationAirportsEnabled;
 
         private ICollectionView _airlines;
@@ -33,17 +36,14 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         private int _frequency;
 
         //Commandos
-        public ICommand ButtonSaveCommand { get; }
-        public ICommand ButtonCancelCommand { get; }
+        public ICommand ButtonSaveCommand { get; private set; }
+        public ICommand ButtonCancelCommand { get; private set; }
 
         #endregion
 
-        //Constructor
-        public NewRouteViewModel(GameViewModel gameViewModel, RoutesViewModel routesViewModel)
+        // Shared initialization logic
+        private void InitializeViewModel()
         {
-            _gameViewModel = gameViewModel;
-            _routesViewModel = routesViewModel;
-
             OriginAirports = CollectionViewSource.GetDefaultView(_gameViewModel.Airports.OrderBy(Airport => Airport.Name));
             DestinationAirports = CollectionViewSource.GetDefaultView(_gameViewModel.Airports.OrderBy(Airport => Airport.Name));
             DestinationAirports.Filter = DestinationAirportsFilter;
@@ -51,9 +51,30 @@ namespace AeroDynasty.ModelViews.RouteViewModels
 
             Airlines = CollectionViewSource.GetDefaultView(_gameViewModel.Airlines.OrderBy(Airline => Airline.Name));
 
-            //Commands
+            // Commands
             ButtonSaveCommand = new RelayCommand(ButtonSave);
             ButtonCancelCommand = new RelayCommand(ButtonCancel);
+        }
+
+        // Constructor for creating a new route
+        public NewRouteViewModel(GameViewModel gameViewModel, RoutesViewModel routesViewModel): this(gameViewModel, routesViewModel, null)
+        {
+            Route = new Route();
+        }
+
+        // Constructor for editing an existing route
+        public NewRouteViewModel(GameViewModel gameViewModel, RoutesViewModel routesViewModel, Route route)
+        {
+            _gameViewModel = gameViewModel;
+            _routesViewModel = routesViewModel;
+
+            InitializeViewModel();
+
+            Route = _referenceRoute = route;
+
+            // If route is not null, it's an edit mode
+            isEdit = Route != null;
+
         }
 
         #region Construction of variables
@@ -105,10 +126,10 @@ namespace AeroDynasty.ModelViews.RouteViewModels
 
         public Airport SelectedDestinationAirport
         {
-            get => _selectedDestinatonAirport;
+            get => _selectedDestinationAirport;
             set
             {
-                _selectedDestinatonAirport = value;
+                _selectedDestinationAirport = value;
                 OnPropertyChanged(nameof(SelectedDestinationAirport));
             }
         }
@@ -186,13 +207,41 @@ namespace AeroDynasty.ModelViews.RouteViewModels
             }
         }
 
+        public Route Route
+        {
+            get => _route;
+            set
+            {
+                try
+                {
+                    _route = value;
+                    if(value != null)
+                    {
+                        SelectedOriginAirport = value.Origin;
+                        SelectedDestinationAirport = value.Destination;
+                        SelectedAirline = value.routeOwner;
+                        Ticketprice = value.ticketPrice;
+                        Frequency = value.flightFrequency;
+                    }
+                    
+                }
+                catch
+                {
+                    throw new Exception($"Could not convert {value} to a Route");
+                }
+
+                OnPropertyChanged(nameof(Route));
+            }
+
+        }
+
         //Setup commando handling
         private void ButtonSave()
         {
             if (SaveNewRoute())
             {
                 _routesViewModel.Routes.Refresh();
-                _routesViewModel.CurrentDetailViewModel = null;
+                _routesViewModel.CurrentDetailViewModel = new ViewRouteViewModel(_gameViewModel, _routesViewModel, Route);
             }
         }
 
@@ -235,11 +284,21 @@ namespace AeroDynasty.ModelViews.RouteViewModels
 
             try
             {
+
                 //Create new route instance
-                Route _route = new Route(SelectedOriginAirport, SelectedDestinationAirport, SelectedAirline, Ticketprice, Frequency);
+                Route = new Route(SelectedOriginAirport, SelectedDestinationAirport, SelectedAirline, Ticketprice, Frequency);
+
+                if (isEdit)
+                {
+                    //Overwrite the route with the new details
+                    _referenceRoute.UpdateWith(Route);
+                }
+                else
+                {
+                    //Add route to global collection
+                    _gameViewModel.Routes.Add(Route);
+                }
                 
-                //Add route to global collection
-                _gameViewModel.Routes.Add(_route);
             }
             catch(Exception ex)
             {
