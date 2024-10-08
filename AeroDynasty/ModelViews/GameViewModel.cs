@@ -23,6 +23,7 @@ namespace AeroDynasty.ModelViews
 
         //Maps
         private Dictionary<string, Country> _countryMap;
+        public Dictionary<string, Country> CountryMap => _countryMap; // Expose CountryMap for GameStateManager
 
         //Observable Collections
         public ObservableCollection<Airline> Airlines { get; set; }
@@ -275,7 +276,31 @@ namespace AeroDynasty.ModelViews
             Routes.Add(_route1);
             Routes.Add(_route2);
         }
-        
+
+        public void SaveGame(string filePath)
+        {
+            bool wasPlaying = !IsPaused;
+
+            if (wasPlaying)
+            {
+                PauseCommand.Execute(null);
+            }
+
+            // Use GameStateManager to save the game
+            GameStateManager.SaveGame(this, filePath);
+
+            if (wasPlaying)
+            {
+                PlayCommand.Execute(null);
+            }
+        }
+
+        public void LoadGame(string filePath)
+        {
+            // Use GameStateManager to load the game
+            GameStateManager.LoadGame(this, filePath);
+        }
+
         #endregion
 
     }

@@ -79,6 +79,7 @@ namespace AeroDynasty.ModelViews
 
         private void ExitGame()
         {
+            //Close the Game
             Application.Current.Shutdown();
         }
 
