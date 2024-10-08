@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace AeroDynasty.ModelViews
+namespace AeroDynasty.ModelViews.AirportViewModels
 {
     public class AirportDetailsViewModel : BaseViewModel
     {

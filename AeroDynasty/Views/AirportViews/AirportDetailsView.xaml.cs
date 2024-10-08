@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AeroDynasty.Views
+namespace AeroDynasty.Views.AirportViews
 {
     /// <summary>
     /// Interaction logic for AirportDetailsView.xaml

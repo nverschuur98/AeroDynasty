@@ -2,22 +2,26 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ModelViews="clr-namespace:AeroDynasty.ModelViews"
                     xmlns:RouteModelViews="clr-namespace:AeroDynasty.ModelViews.RouteViewModels"
+                    xmlns:AirportModelViews="clr-namespace:AeroDynasty.ModelViews.AirportViewModels"
                     xmlns:Views="clr-namespace:AeroDynasty.Views"
-                    xmlns:RouteViews="clr-namespace:AeroDynasty.Views.RouteViews">
+                    xmlns:RouteViews="clr-namespace:AeroDynasty.Views.RouteViews"
+                    xmlns:AirportViews="clr-namespace:AeroDynasty.Views.AirportViews">
 
     <!-- DataTemplates to map ViewModels to Views -->
     <DataTemplate DataType="{x:Type ModelViews:HomeViewModel}">
         <Views:HomeView />
     </DataTemplate>
 
+    <!-- AIRPORTS -->
     <DataTemplate DataType="{x:Type ModelViews:AirportsViewModel}">
         <Views:AirportsView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type ModelViews:AirportDetailsViewModel}">
-        <Views:AirportDetailsView />
+    <DataTemplate DataType="{x:Type AirportModelViews:AirportDetailsViewModel}">
+        <AirportViews:AirportDetailsView />
     </DataTemplate>
 
+    <!-- AIRLINES -->
     <DataTemplate DataType="{x:Type ModelViews:AirlinesViewModel}">
         <Views:AirlinesView />
     </DataTemplate>
