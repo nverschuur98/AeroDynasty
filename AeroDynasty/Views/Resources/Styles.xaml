@@ -35,4 +35,5 @@
         <Setter Property="Margin" Value="5,0,0,0"/>
         <Setter Property="Cursor" Value="Hand"/>
     </Style>
+
 </ResourceDictionary>

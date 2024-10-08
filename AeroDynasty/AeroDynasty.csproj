@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ModelViews\AirlinerViewModels\" />
     <Folder Include="Utilities\" />
+    <Folder Include="Views\AirlinerViews\" />
   </ItemGroup>
 
   <ItemGroup>

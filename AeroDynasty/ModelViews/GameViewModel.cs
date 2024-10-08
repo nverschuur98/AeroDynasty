@@ -68,9 +68,9 @@ namespace AeroDynasty.ModelViews
         public ICommand NavigateAirportsCommand { get; }
         public ICommand NavigateAirlinesCommand { get; }
         public ICommand NavigateRoutesCommand { get; }
-        /*public ICommand NavigateAirlinersCommand { get; }
-        public ICommand NavigateFinancesCommand { get; }
-        public ICommand NavigateSettingsCommand { get; }*/
+        public ICommand NavigateAirlinersCommand { get; }
+        /*public ICommand NavigateFinancesCommand { get; }*/
+        public ICommand NavigateSettingsCommand { get; }
         #endregion
 
         public GameViewModel()
@@ -93,6 +93,8 @@ namespace AeroDynasty.ModelViews
             NavigateAirportsCommand = new RelayCommand(NavigateAirports);
             NavigateAirlinesCommand = new RelayCommand(NavigateAirlines);
             NavigateRoutesCommand = new RelayCommand(NavigateRoutes);
+            NavigateAirlinersCommand = new RelayCommand(NavigateAirliners);
+            NavigateSettingsCommand = new RelayCommand(NavigateSettings);
 
             //Pause the game at start
             _isPaused = false;
@@ -131,6 +133,16 @@ namespace AeroDynasty.ModelViews
         private void NavigateRoutes()
         {
             CurrentViewModel = new RoutesViewModel(this);  // Pass the current instance of GameViewModel
+        }
+
+        private void NavigateAirliners()
+        {
+            CurrentViewModel = new AirlinersViewModel(this);  // Pass the current instance of GameViewModel
+        }
+
+        private void NavigateSettings()
+        {
+            CurrentViewModel = new SettingsViewModel(this);  // Pass the current instance of GameViewModel
         }
         #endregion
 

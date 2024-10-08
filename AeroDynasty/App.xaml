@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:AeroDynasty"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Merge global styles and resources here -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Now the resources can be used across all views -->
+                <ResourceDictionary Source="Views/Resources/Styles.xaml" />
+                <ResourceDictionary Source="Views/Resources/DataTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

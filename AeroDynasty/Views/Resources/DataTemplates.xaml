@@ -22,6 +22,7 @@
         <Views:AirlinesView />
     </DataTemplate>
 
+    <!-- ROUTES -->
     <DataTemplate DataType="{x:Type ModelViews:RoutesViewModel}">
         <Views:RoutesView />
     </DataTemplate>
@@ -32,6 +33,16 @@
 
     <DataTemplate DataType="{x:Type RouteModelViews:ViewRouteViewModel}">
         <RouteViews:ViewRouteView />
+    </DataTemplate>
+
+    <!-- AIRLINERS -->
+    <DataTemplate DataType="{x:Type ModelViews:AirlinersViewModel}">
+        <Views:AirlinersView />
+    </DataTemplate>
+
+    <!-- SETTINGS -->
+    <DataTemplate DataType="{x:Type ModelViews:SettingsViewModel}">
+        <Views:SettingsView />
     </DataTemplate>
 
 </ResourceDictionary>

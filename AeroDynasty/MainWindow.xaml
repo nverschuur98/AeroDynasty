@@ -9,17 +9,7 @@
         xmlns:ModelViews="clr-namespace:AeroDynasty.ModelViews"
         Title="AeroDynasty"
         Height="600" Width="1000">
-
-    <Window.Resources>
-        <!-- Merge the Styles.xaml file -->
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Views/Resources/Styles.xaml" />
-                <ResourceDictionary Source="Views/Resources/DataTemplates.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-
+    
     <Grid>
         <!-- Define the Layout for the Window -->
         <Grid.RowDefinitions>
@@ -30,14 +20,14 @@
         </Grid.RowDefinitions>
 
         <!-- Header with Buttons, Date, and Menu -->
-        <StackPanel Grid.Row="0" Orientation="Vertical" Background="#2c3e50" Margin="10">
+        <StackPanel Grid.Row="0" Orientation="Vertical" Background="#2c3e50" Margin="0">
 
             <!-- Top Controls (Play/Pause, Date) -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,0">
+                <TextBlock Text="Date:" VerticalAlignment="Center" Foreground="White" Margin="0"/>
+                <TextBlock Text="{Binding CurrentDate}" VerticalAlignment="Center" Foreground="White" MinWidth="150" HorizontalAlignment="Left"/>
                 <Button Content="Play" Command="{Binding PlayCommand}" Padding="5" Style="{StaticResource HeaderButtonStyle}"/>
                 <Button Content="Pause" Command="{Binding PauseCommand}" Padding="5" Style="{StaticResource HeaderButtonStyle}"/>
-                <TextBlock Text="Date:" VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0"/>
-                <TextBlock Text="{Binding CurrentDate}" VerticalAlignment="Center" Foreground="White"/>
             </StackPanel>
 
             <!-- Menu Navigation -->
