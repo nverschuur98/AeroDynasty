@@ -5,8 +5,9 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using AeroDynasty.Models.Core;
 
-namespace AeroDynasty.Models
+namespace AeroDynasty.Models.AirportModels
 {
     public class Airport
     {

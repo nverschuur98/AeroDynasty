@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AeroDynasty.Models.AirlineModels;
+using AeroDynasty.Models.AirportModels;
 
-namespace AeroDynasty.Models
+namespace AeroDynasty.Models.RouteModels
 {
     public class Route
     {

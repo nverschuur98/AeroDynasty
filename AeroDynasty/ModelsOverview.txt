@@ -1,0 +1,23 @@
+Models>
+	Core>
+		Country
+		Coordinates
+		Cities
+	AirlineModels> //Reserved for handeling all airlines 
+		Airline
+		Fleet<Airliner>
+	AirlinerModels>
+		Airliner
+		CabinConfig
+	AirportModels>
+		Airport
+	AircraftModels>
+		Manufacturer
+		AircraftModel
+	RouteModels>
+		Route
+		FlightSchedule
+		FlightLeg
+	Game>
+		GameState
+

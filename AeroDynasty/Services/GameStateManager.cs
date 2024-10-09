@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Linq;
-using System.Collections.ObjectModel;
-using AeroDynasty.Models;
+﻿using AeroDynasty.Models.RouteModels;
+using AeroDynasty.Models.AirlineModels;
+using AeroDynasty.Models.AirportModels;
 using AeroDynasty.ModelViews;
 
 namespace AeroDynasty.Services

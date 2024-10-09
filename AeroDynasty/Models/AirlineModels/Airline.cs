@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AeroDynasty.Models.Core;
+using AeroDynasty.Models.AirlinerModels;
 
-namespace AeroDynasty.Models
+namespace AeroDynasty.Models.AirlineModels
 {
     public class Airline
     {

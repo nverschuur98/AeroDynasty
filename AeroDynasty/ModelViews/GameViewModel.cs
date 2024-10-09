@@ -1,17 +1,13 @@
 ﻿using AeroDynasty.Models;
-using AeroDynasty.Views;
+using AeroDynasty.Models.Core;
+using AeroDynasty.Models.AirlineModels;
+using AeroDynasty.Models.AirportModels;
+using AeroDynasty.Models.RouteModels;
 using AeroDynasty.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.IO;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows;
 
 namespace AeroDynasty.ModelViews
 {

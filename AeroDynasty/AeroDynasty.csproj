@@ -38,4 +38,10 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="ModelsOverview.txt">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

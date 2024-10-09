@@ -1,4 +1,4 @@
-﻿using AeroDynasty.Models;
+﻿using AeroDynasty.Models.AirportModels;
 using AeroDynasty.ModelViews.AirportViewModels;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

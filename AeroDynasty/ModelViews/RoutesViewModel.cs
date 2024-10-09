@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using AeroDynasty.Models;
+using AeroDynasty.Models.RouteModels;
 using AeroDynasty.ModelViews.RouteViewModels;
 using System.Windows.Media;
 

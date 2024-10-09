@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AeroDynasty.Models
+namespace AeroDynasty.Models.Core
 {
     public class Country
     {

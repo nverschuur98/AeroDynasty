@@ -1,4 +1,4 @@
-﻿using AeroDynasty.Models;
+﻿using AeroDynasty.Models.RouteModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
