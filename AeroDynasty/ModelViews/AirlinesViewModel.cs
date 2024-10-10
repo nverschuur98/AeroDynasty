@@ -1,4 +1,5 @@
 ﻿using AeroDynasty.Models.AirlineModels;
+using AeroDynasty.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace AeroDynasty.ModelViews
         public AirlinesViewModel(GameViewModel gameViewModel)
         {
             _gameViewModel = gameViewModel;
-            FilteredAirlines = CollectionViewSource.GetDefaultView(gameViewModel.Airlines);
+            FilteredAirlines = CollectionViewSource.GetDefaultView(GameData.Instance.Airlines);
             FilteredAirlines.Filter = FilterAirlines;
         }
 

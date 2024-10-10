@@ -12,6 +12,7 @@ using System.Windows.Input;
 using AeroDynasty.Models.RouteModels;
 using AeroDynasty.ModelViews.RouteViewModels;
 using System.Windows.Media;
+using AeroDynasty.Services;
 
 namespace AeroDynasty.ModelViews
 {
@@ -35,7 +36,7 @@ namespace AeroDynasty.ModelViews
         {
             _gameViewModel = gameViewModel;
             CurrentDetailViewModel = null;
-            Routes = CollectionViewSource.GetDefaultView(_gameViewModel.Routes);
+            Routes = CollectionViewSource.GetDefaultView(GameData.Instance.Routes);
 
             NewRouteCommand = new RelayCommand(NewRoute);
             ViewRouteCommand = new RelayCommand(ViewRoute);

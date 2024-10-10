@@ -12,8 +12,8 @@
             <RowDefinition Height="Auto" />
             <!-- Header row will take only the needed space -->
             <RowDefinition Height="Auto" />
+            <!-- ListView will take the remaining space-->
             <RowDefinition Height="*" />
-            <!-- ListBox will take all remaining space -->
         </Grid.RowDefinitions>
 
         <!-- Header -->
@@ -24,37 +24,27 @@
             <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"  FontSize="14"/>
             <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"  FontSize="14"/>
         </StackPanel>
-        
-        <!-- DataGrid in the second row to take up all available space -->
-        <DataGrid ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" AutoGenerateColumns="False" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False">
-            <DataGrid.Columns>
-                <!-- Name Column -->
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
-                <!-- IATA Code Column -->
-                <DataGridTextColumn Header="IATA" Binding="{Binding IATA}" Width="Auto" />
-                <!-- ICAO Code Column -->
-                <DataGridTextColumn Header="ICAO" Binding="{Binding ICAO}" Width="Auto" />
-                <!-- CountryCode Column -->
-                <DataGridTextColumn Header="CountryCode" Binding="{Binding Country.ISOCode}" Width="Auto" />
-                <!--<DataGridTemplateColumn Header="Flag" Width="Auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding CountryFlag}"/>
-                                <Image Source="{Binding CountryFlag}" Width="Auto" Height="15"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
-                <!-- Country Column -->
-                <DataGridTextColumn Header="Country" Binding="{Binding Country.Name}" Width="*" />
-            </DataGrid.Columns>
-            
-            <!-- Double-click Command -->
-            <DataGrid.InputBindings>
-                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding NavigateAirportDetailsCommand}" />
-            </DataGrid.InputBindings>
-        </DataGrid>
-        
+
+
+
+        <ListView ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto" />
+                    <GridViewColumn Header="IATA" DisplayMemberBinding="{Binding IATA}" Width="auto" />
+                    <GridViewColumn Header="ICAO" DisplayMemberBinding="{Binding ICAO}" Width="auto" />
+                    <GridViewColumn Header="Country">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Path=Country.FlagPath}" Stretch="Fill" Height="15" Width="30"  />
+                                    <TextBlock Text="{Binding Country.Name}" Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

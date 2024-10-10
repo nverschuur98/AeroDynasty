@@ -19,8 +19,9 @@
             <!-- Header -->
             <TextBlock Text="Airliners" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
 
-            <Grid Grid.Row="2">
-                
-            </Grid>
+            <TabControl Grid.Row="2">
+            <TabItem Content="{Binding OwnedAirlinersViewModel}" Header="Owned Airliners" IsSelected="True" />
+            <TabItem Content="{Binding NewAircraftsViewModel}" Header="Buy New Aircrafts" IsSelected="False" />
+        </TabControl>
         </Grid>
 </UserControl>

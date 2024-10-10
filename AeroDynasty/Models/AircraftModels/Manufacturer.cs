@@ -12,5 +12,13 @@ namespace AeroDynasty.Models.AircraftModels
         public string Name { get; set; }
         public Country Country { get; set; }
         public DateTime FoundingDate { get; set; }
+
+        public Manufacturer(string name, Country country, DateTime foundingDate)
+        {
+            Name = name;
+            Country = country;
+            FoundingDate = foundingDate;
+        }
     }
+
 }

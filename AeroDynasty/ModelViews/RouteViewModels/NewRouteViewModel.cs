@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using AeroDynasty.Services;
 
 namespace AeroDynasty.ModelViews.RouteViewModels
 {
@@ -46,12 +47,12 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         // Shared initialization logic
         private void InitializeViewModel()
         {
-            OriginAirports = CollectionViewSource.GetDefaultView(_gameViewModel.Airports.OrderBy(Airport => Airport.Name));
-            DestinationAirports = CollectionViewSource.GetDefaultView(_gameViewModel.Airports.OrderBy(Airport => Airport.Name));
+            OriginAirports = CollectionViewSource.GetDefaultView(GameData.Instance.Airports.OrderBy(Airport => Airport.Name));
+            DestinationAirports = CollectionViewSource.GetDefaultView(GameData.Instance.Airports.OrderBy(Airport => Airport.Name));
             DestinationAirports.Filter = DestinationAirportsFilter;
             DestinationAirportsEnabled = false;
 
-            Airlines = CollectionViewSource.GetDefaultView(_gameViewModel.Airlines.OrderBy(Airline => Airline.Name));
+            Airlines = CollectionViewSource.GetDefaultView(GameData.Instance.Airlines.OrderBy(Airline => Airline.Name));
 
             // Commands
             ButtonSaveCommand = new RelayCommand(ButtonSave);
@@ -298,7 +299,7 @@ namespace AeroDynasty.ModelViews.RouteViewModels
                 else
                 {
                     //Add route to global collection
-                    _gameViewModel.Routes.Add(Route);
+                    GameData.Instance.Routes.Add(Route);
                 }
                 
             }

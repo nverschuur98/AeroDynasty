@@ -1,0 +1,212 @@
+[
+  {
+    "Name": "Boeing",
+    "Country": "US",
+    "FoundingDate": "1916-07-15"
+  },
+  {
+    "Name": "Douglas Aircraft Company",
+    "Country": "US",
+    "FoundingDate": "1921-07-22"
+  },
+  {
+    "Name": "Lockheed Corporation",
+    "Country": "US",
+    "FoundingDate": "1926-12-19"
+  },
+  {
+    "Name": "North American Aviation",
+    "Country": "US",
+    "FoundingDate": "1928-12-06"
+  },
+  {
+    "Name": "Grumman Aircraft Engineering Corporation",
+    "Country": "US",
+    "FoundingDate": "1930-12-06"
+  },
+  {
+    "Name": "Curtiss-Wright Corporation",
+    "Country": "US",
+    "FoundingDate": "1929-07-05"
+  },
+  {
+    "Name": "Fairchild Aircraft",
+    "Country": "US",
+    "FoundingDate": "1925-02-16"
+  },
+  {
+    "Name": "Convair (Consolidated Vultee Aircraft Corporation)",
+    "Country": "US",
+    "FoundingDate": "1943-03-17"
+  },
+  {
+    "Name": "Hawker Aircraft",
+    "Country": "GB",
+    "FoundingDate": "1920-04-01"
+  },
+  {
+    "Name": "Supermarine",
+    "Country": "GB",
+    "FoundingDate": "1913-01-01"
+  },
+  {
+    "Name": "Avro",
+    "Country": "GB",
+    "FoundingDate": "1910-01-01"
+  },
+  {
+    "Name": "Vickers-Armstrongs",
+    "Country": "GB",
+    "FoundingDate": "1927-01-01"
+  },
+  {
+    "Name": "De Havilland",
+    "Country": "GB",
+    "FoundingDate": "1920-09-25"
+  },
+  {
+    "Name": "Bristol Aeroplane Company",
+    "Country": "GB",
+    "FoundingDate": "1910-02-19"
+  },
+  {
+    "Name": "Fokker",
+    "Country": "NL",
+    "FoundingDate": "1912-07-21"
+  },
+  {
+    "Name": "Messerschmitt AG",
+    "Country": "DE",
+    "FoundingDate": "1938-07-11"
+  },
+  {
+    "Name": "Junkers",
+    "Country": "DE",
+    "FoundingDate": "1895-04-01"
+  },
+  {
+    "Name": "Heinkel",
+    "Country": "DE",
+    "FoundingDate": "1922-12-01"
+  },
+  {
+    "Name": "Fiat Aviazione",
+    "Country": "IT",
+    "FoundingDate": "1916-01-01"
+  },
+  {
+    "Name": "Caproni",
+    "Country": "IT",
+    "FoundingDate": "1908-01-01"
+  },
+  {
+    "Name": "Savoia-Marchetti",
+    "Country": "IT",
+    "FoundingDate": "1915-01-01"
+  },
+  {
+    "Name": "Piaggio Aero",
+    "Country": "IT",
+    "FoundingDate": "1884-01-01"
+  },
+  {
+    "Name": "Macchi",
+    "Country": "IT",
+    "FoundingDate": "1912-01-01"
+  },
+  {
+    "Name": "Mitsubishi Heavy Industries",
+    "Country": "JP",
+    "FoundingDate": "1934-12-01"
+  },
+  {
+    "Name": "Nakajima Aircraft Company",
+    "Country": "JP",
+    "FoundingDate": "1917-12-01"
+  },
+  {
+    "Name": "Kawanishi Aircraft Company",
+    "Country": "JP",
+    "FoundingDate": "1928-01-01"
+  },
+  {
+    "Name": "A�rospatiale",
+    "Country": "FR",
+    "FoundingDate": "1936-01-01"
+  },
+  {
+    "Name": "Sud Aviation",
+    "Country": "FR",
+    "FoundingDate": "1957-03-01"
+  },
+  {
+    "Name": "Farman Aviation Works",
+    "Country": "FR",
+    "FoundingDate": "1908-01-01"
+  },
+  {
+    "Name": "Dassault Aviation",
+    "Country": "FR",
+    "FoundingDate": "1929-12-01"
+  },
+  {
+    "Name": "Breguet Aviation",
+    "Country": "FR",
+    "FoundingDate": "1911-01-01"
+  },
+  {
+    "Name": "Handley Page",
+    "Country": "GB",
+    "FoundingDate": "1909-06-17"
+  },
+  {
+    "Name": "Short Brothers",
+    "Country": "GB",
+    "FoundingDate": "1908-01-01"
+  },
+  {
+    "Name": "Saab",
+    "Country": "SE",
+    "FoundingDate": "1937-04-02"
+  },
+  {
+    "Name": "Ilyushin",
+    "Country": "RU",
+    "FoundingDate": "1933-01-01"
+  },
+  {
+    "Name": "Tupolev",
+    "Country": "RU",
+    "FoundingDate": "1922-10-22"
+  },
+  {
+    "Name": "Yakovlev",
+    "Country": "RU",
+    "FoundingDate": "1934-01-01"
+  },
+  {
+    "Name": "Antonov",
+    "Country": "UA",
+    "FoundingDate": "1946-05-31"
+  },
+  {
+    "Name": "Aero Vodochody",
+    "Country": "CZ",
+    "FoundingDate": "1919-02-25"
+  },
+  {
+    "Name": "Avia",
+    "Country": "CZ",
+    "FoundingDate": "1919-01-01"
+  },
+  {
+    "Name": "Letov",
+    "Country": "CZ",
+    "FoundingDate": "1918-01-01"
+  },
+  {
+    "Name": "Embraer",
+    "Country": "BR",
+    "FoundingDate": "1969-08-19"
+  }
+]

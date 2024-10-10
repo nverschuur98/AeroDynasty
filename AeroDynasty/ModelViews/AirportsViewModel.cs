@@ -1,5 +1,6 @@
 ﻿using AeroDynasty.Models.AirportModels;
 using AeroDynasty.ModelViews.AirportViewModels;
+using AeroDynasty.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
@@ -26,7 +27,7 @@ namespace AeroDynasty.ModelViews
         public AirportsViewModel(GameViewModel gameViewModel)
         {
             _gameViewModel = gameViewModel;  // Store reference to GameViewModel
-            FilteredAirports = CollectionViewSource.GetDefaultView(_gameViewModel.Airports);
+            FilteredAirports = CollectionViewSource.GetDefaultView(GameData.Instance.Airports);
             FilteredAirports.Filter = FilterAirports;
             NavigateAirportDetailsCommand = new RelayCommand(NavigateAirportDetails);
         }
@@ -68,7 +69,7 @@ namespace AeroDynasty.ModelViews
         //Setup commando handling
         private void NavigateAirportDetails()
         {
-            if(_selectedAirport != null)
+            if (_selectedAirport != null)
             {
                 _gameViewModel.CurrentViewModel = new AirportDetailsViewModel(_gameViewModel, _selectedAirport);
             }
@@ -86,10 +87,10 @@ namespace AeroDynasty.ModelViews
             {
                 if (string.IsNullOrEmpty(SearchText))
                     return true;
-                return airport.Name.Contains(SearchText, System.StringComparison.InvariantCultureIgnoreCase) ||
-                       airport.IATA.Contains(SearchText, System.StringComparison.InvariantCultureIgnoreCase) ||
-                       airport.ICAO.Contains(SearchText, System.StringComparison.InvariantCultureIgnoreCase) ||
-                       airport.Country.Name.Contains(SearchText, System.StringComparison.InvariantCultureIgnoreCase);
+                return airport.Name.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase) ||
+                       airport.IATA.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase) ||
+                       airport.ICAO.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase) ||
+                       airport.Country.Name.Contains(SearchText, StringComparison.InvariantCultureIgnoreCase);
             }
             return false;
         }
