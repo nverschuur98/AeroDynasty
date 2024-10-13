@@ -4,10 +4,12 @@
                     xmlns:RouteModelViews="clr-namespace:AeroDynasty.ModelViews.RouteViewModels"
                     xmlns:AirportModelViews="clr-namespace:AeroDynasty.ModelViews.AirportViewModels"
                     xmlns:AirlinerModelViews="clr-namespace:AeroDynasty.ModelViews.AirlinerViewModels"
+                    xmlns:AircraftModelViews="clr-namespace:AeroDynasty.ModelViews.AircraftViewModels"
                     xmlns:Views="clr-namespace:AeroDynasty.Views"
                     xmlns:RouteViews="clr-namespace:AeroDynasty.Views.RouteViews"
                     xmlns:AirportViews="clr-namespace:AeroDynasty.Views.AirportViews"
-                    xmlns:AirlinerViews="clr-namespace:AeroDynasty.Views.AirlinerViews">
+                    xmlns:AirlinerViews="clr-namespace:AeroDynasty.Views.AirlinerViews"
+                    xmlns:AircraftViews="clr-namespace:AeroDynasty.Views.AircraftViews">
 
     <!-- DataTemplates to map ViewModels to Views -->
     <DataTemplate DataType="{x:Type ModelViews:HomeViewModel}">
@@ -48,6 +50,10 @@
 
     <DataTemplate DataType="{x:Type AirlinerModelViews:AirlinersOwnedViewModel}">
         <AirlinerViews:AirlinersOwnedView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type AircraftModelViews:ManufacturersOverviewViewModel}">
+        <AircraftViews:ManufacturersOverviewView />
     </DataTemplate>
 
     <!-- SETTINGS -->

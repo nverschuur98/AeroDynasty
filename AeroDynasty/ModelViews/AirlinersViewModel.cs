@@ -1,4 +1,5 @@
-﻿using AeroDynasty.ModelViews.AirlinerViewModels;
+﻿using AeroDynasty.ModelViews.AircraftViewModels;
+using AeroDynasty.ModelViews.AirlinerViewModels;
 
 namespace AeroDynasty.ModelViews
 {
@@ -19,6 +20,7 @@ namespace AeroDynasty.ModelViews
         {
             _gameViewModel = gameViewModel;
             OwnedAirlinersViewModel = new AirlinersOwnedViewModel();
+            NewAircraftsViewModel = new ManufacturersOverviewViewModel(_gameViewModel);
         }
 
         #region Construction of variables

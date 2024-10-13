@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="Assets\ManufacturerLogos\" />
-    <Folder Include="ModelViews\AircraftViewModels\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
 

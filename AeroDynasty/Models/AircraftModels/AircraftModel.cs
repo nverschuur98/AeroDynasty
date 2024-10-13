@@ -17,7 +17,9 @@ namespace AeroDynasty.Models.AircraftModels
         public int minRunwayLength { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public DateTime IntroductionDate { get; set; }
+        public string FormattedIntroductionDate => IntroductionDate.ToString("dd-MMM-yyyy");
         public DateTime RetirementDate { get; set; }
+        public string FormattedRetirementDate => RetirementDate.ToString("dd-MMM-yyyy");
         public AircraftType Type { get; set; }
     }
 }
