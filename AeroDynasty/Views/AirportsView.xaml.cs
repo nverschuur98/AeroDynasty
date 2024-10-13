@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AeroDynasty.Models.AirportModels;
+using AeroDynasty.ModelViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,23 @@ namespace AeroDynasty.Views
         public AirportsView()
         {
             InitializeComponent();
+        }
+
+        private void NavigateAirportDetailsClick(Object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                // Access the DataContext, which should be the ViewModel
+                var viewModel = DataContext as AirportsViewModel;
+
+                // Execute the command with the selected airport as a parameter
+                viewModel?.NavigateAirportDetailsCommand.Execute(null);
+            }
+            catch
+            {
+                throw new Exception("Something went wrong trying to execute the command.");
+            }
+            
         }
     }
 }

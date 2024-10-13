@@ -26,14 +26,14 @@
         </StackPanel>
 
         <!-- DataGrid in the second row to take up all available space -->
-        <DataGrid ItemsSource="{Binding FilteredAirlines}" AutoGenerateColumns="False" Grid.Row="2" IsReadOnly="True" CanUserAddRows="False">
-            <DataGrid.Columns>
-                <!-- Name Column -->
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
-                <!-- IATA Code Column -->
-                <DataGridTextColumn Header="Reputation" Binding="{Binding Reputation}" Width="Auto" />
-                <DataGridTextColumn Header="Country" Binding="{Binding Country.Name}" Width="Auto" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView ItemsSource="{Binding FilteredAirlines}" Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Reputation" DisplayMemberBinding="{Binding Reputation}" />
+                    <GridViewColumn Header="Coutry" DisplayMemberBinding="{Binding Country.Name}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

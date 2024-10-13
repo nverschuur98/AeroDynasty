@@ -22,12 +22,10 @@
         <!-- Searchbar -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
             <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"  FontSize="14"/>
-            <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"  FontSize="14"/>
+            <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" FontSize="14"/>
         </StackPanel>
 
-
-
-        <ListView ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" Grid.Row="2">
+        <ListView ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" Grid.Row="2" MouseDoubleClick="NavigateAirportDetailsClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto" />

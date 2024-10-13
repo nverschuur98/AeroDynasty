@@ -3,6 +3,7 @@ using AeroDynasty.ModelViews.AirportViewModels;
 using AeroDynasty.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -69,9 +70,9 @@ namespace AeroDynasty.ModelViews
         //Setup commando handling
         private void NavigateAirportDetails()
         {
-            if (_selectedAirport != null)
+            if (SelectedAirport != null)
             {
-                _gameViewModel.CurrentViewModel = new AirportDetailsViewModel(_gameViewModel, _selectedAirport);
+                _gameViewModel.CurrentViewModel = new AirportDetailsViewModel(_gameViewModel, SelectedAirport);
             }
             else
             {
