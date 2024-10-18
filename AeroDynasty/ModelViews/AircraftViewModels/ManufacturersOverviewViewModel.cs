@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace AeroDynasty.ModelViews.AircraftViewModels
 {
@@ -15,10 +16,12 @@ namespace AeroDynasty.ModelViews.AircraftViewModels
         #region Declaring of variables
         //Private variables
         private GameViewModel _gameViewModel;
+        private object _currentDetailView;
         private Manufacturer _selectedManufacturer { get; set; }
         private ICollectionView _manufacturers;
 
         //Commandos
+        public ICommand NavigateManufacturerDetailsCommand { get; }
 
         #endregion
 
@@ -28,11 +31,22 @@ namespace AeroDynasty.ModelViews.AircraftViewModels
             _gameViewModel = gameViewModel;
             Manufacturers = CollectionViewSource.GetDefaultView(GameData.Instance.Manufacturers);
             Manufacturers.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            NavigateManufacturerDetailsCommand = new RelayCommand(NavigateManufacturerDetails);
         }
 
         #region Construction of variables
 
         //Setup public variables to local
+        public object CurrentDetailView
+        {
+            get => _currentDetailView;
+            set
+            {
+                _currentDetailView = value;
+                OnPropertyChanged(nameof(CurrentDetailView)); 
+            }
+        }
+
         public Manufacturer SelectedManufacturer
         {
             get => _selectedManufacturer;
@@ -54,6 +68,10 @@ namespace AeroDynasty.ModelViews.AircraftViewModels
         }
 
         //Setup commando handling
+        private void NavigateManufacturerDetails()
+        {
+            CurrentDetailView = new ManufacturerViewModel(_gameViewModel, SelectedManufacturer);
+        }
 
 
         #endregion

@@ -2,211 +2,560 @@
   {
     "Name": "Boeing",
     "Country": "US",
-    "FoundingDate": "1916-07-15"
+    "FoundingDate": "1916-07-15",
+    "Description": "Boeing is a leading aerospace company that designs, manufactures, and sells airplanes, rotorcraft, rockets, satellites, and telecommunications equipment worldwide.",
+    "Aircrafts": [
+      {
+        "Name": "Boeing 377 Stratocruiser",
+        "Family": "377",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "523",
+        "maxPax": "100",
+        "maxCargo": "15200",
+        "maxRange": "6437",
+        "IntroductionDate": "1947-07-08",
+        "RetirementDate": "1963-01-01",
+        "minRunwayLength": "2300"
+      },
+      {
+        "Name": "Boeing 377-10",
+        "Family": "377",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "523",
+        "maxPax": "104",
+        "maxCargo": "16000",
+        "maxRange": "6400",
+        "IntroductionDate": "1949-01-01",
+        "RetirementDate": "1965-01-01",
+        "minRunwayLength": "2300"
+      },
+      {
+        "Name": "Boeing 377-18",
+        "Family": "377",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "523",
+        "maxPax": "96",
+        "maxCargo": "15500",
+        "maxRange": "6200",
+        "IntroductionDate": "1950-01-01",
+        "RetirementDate": "1966-01-01",
+        "minRunwayLength": "2300"
+      },
+      {
+        "Name": "Boeing 314 Clipper",
+        "Family": "314",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "300",
+        "maxPax": "74",
+        "maxCargo": "0",
+        "maxRange": "5800",
+        "IntroductionDate": "1939-03-20",
+        "RetirementDate": "1951-01-01",
+        "minRunwayLength": "2000"
+      },
+      {
+        "Name": "Boeing 314A Clipper",
+        "Family": "314",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "310",
+        "maxPax": "77",
+        "maxCargo": "0",
+        "maxRange": "6100",
+        "IntroductionDate": "1941-01-01",
+        "RetirementDate": "1950-01-01",
+        "minRunwayLength": "2000"
+      },
+      {
+        "Name": "Boeing 307 Stratoliner",
+        "Family": "307",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "346",
+        "maxPax": "33",
+        "maxCargo": "2000",
+        "maxRange": "3780",
+        "IntroductionDate": "1938-12-31",
+        "RetirementDate": "1975-01-01",
+        "minRunwayLength": "1800"
+      },
+      {
+        "Name": "Boeing 307B Stratoliner",
+        "Family": "307",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "350",
+        "maxPax": "40",
+        "maxCargo": "1500",
+        "maxRange": "4000",
+        "IntroductionDate": "1945-01-01",
+        "RetirementDate": "1960-01-01",
+        "minRunwayLength": "1800"
+      },
+      {
+        "Name": "Boeing 247",
+        "Family": "247",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "306",
+        "maxPax": "10",
+        "maxCargo": "800",
+        "maxRange": "1200",
+        "IntroductionDate": "1933-02-08",
+        "RetirementDate": "1952-01-01",
+        "minRunwayLength": "1500"
+      },
+      {
+        "Name": "Boeing 247D",
+        "Family": "247",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "300",
+        "maxPax": "12",
+        "maxCargo": "1000",
+        "maxRange": "1200",
+        "IntroductionDate": "1934-01-01",
+        "RetirementDate": "1950-01-01",
+        "minRunwayLength": "1500"
+      }
+    ]
   },
   {
     "Name": "Douglas Aircraft Company",
     "Country": "US",
-    "FoundingDate": "1921-07-22"
+    "FoundingDate": "1921-07-22",
+    "Description": "Douglas Aircraft Company was a major American manufacturer of military and civilian aircraft, known for its innovative designs and engineering excellence.",
+    "Aircrafts": [
+      {
+        "Name": "Douglas DC-3",
+        "Family": "DC-3",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "207",
+        "maxPax": "21",
+        "maxCargo": "0",
+        "maxRange": "2000",
+        "IntroductionDate": "1936-06-17",
+        "RetirementDate": "1960-01-01",
+        "minRunwayLength": "1500"
+      },
+      {
+        "Name": "Douglas DC-3C",
+        "Family": "DC-3",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "207",
+        "maxPax": "30",
+        "maxCargo": "0",
+        "maxRange": "2000",
+        "IntroductionDate": "1941-01-01",
+        "RetirementDate": "1965-01-01",
+        "minRunwayLength": "1500"
+      },
+      {
+        "Name": "Douglas DC-3T",
+        "Family": "DC-3",
+        "AircraftType": "Cargo",
+        "EngineType": "Prop",
+        "CruisingSpeed": "200",
+        "maxPax": "0",
+        "maxCargo": "10000",
+        "maxRange": "1500",
+        "IntroductionDate": "1945-01-01",
+        "RetirementDate": "1975-01-01",
+        "minRunwayLength": "1500"
+      },
+      {
+        "Name": "Douglas DC-4",
+        "Family": "DC-4",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "205",
+        "maxPax": "44",
+        "maxCargo": "0",
+        "maxRange": "3800",
+        "IntroductionDate": "1942-01-01",
+        "RetirementDate": "1958-01-01",
+        "minRunwayLength": "2500"
+      },
+      {
+        "Name": "Douglas DC-4E",
+        "Family": "DC-4",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "210",
+        "maxPax": "40",
+        "maxCargo": "0",
+        "maxRange": "4500",
+        "IntroductionDate": "1939-01-01",
+        "RetirementDate": "1955-01-01",
+        "minRunwayLength": "2500"
+      },
+      {
+        "Name": "Douglas DC-4-1009",
+        "Family": "DC-4",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "205",
+        "maxPax": "44",
+        "maxCargo": "0",
+        "maxRange": "3800",
+        "IntroductionDate": "1946-01-01",
+        "RetirementDate": "1958-01-01",
+        "minRunwayLength": "2500"
+      },
+      {
+        "Name": "Douglas DC-6",
+        "Family": "DC-6",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "265",
+        "maxPax": "54",
+        "maxCargo": "0",
+        "maxRange": "4000",
+        "IntroductionDate": "1946-01-01",
+        "RetirementDate": "1988-01-01",
+        "minRunwayLength": "3000"
+      },
+      {
+        "Name": "Douglas DC-6A",
+        "Family": "DC-6",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "265",
+        "maxPax": "80",
+        "maxCargo": "8500",
+        "maxRange": "4200",
+        "IntroductionDate": "1947-01-01",
+        "RetirementDate": "1970-01-01",
+        "minRunwayLength": "3000"
+      },
+      {
+        "Name": "Douglas DC-6B",
+        "Family": "DC-6",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "270",
+        "maxPax": "102",
+        "maxCargo": "0",
+        "maxRange": "4400",
+        "IntroductionDate": "1947-01-01",
+        "RetirementDate": "1970-01-01",
+        "minRunwayLength": "3000"
+      },
+      {
+        "Name": "Douglas DC-6C",
+        "Family": "DC-6",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "265",
+        "maxPax": "100",
+        "maxCargo": "15000",
+        "maxRange": "4500",
+        "IntroductionDate": "1951-01-01",
+        "RetirementDate": "1980-01-01",
+        "minRunwayLength": "3000"
+      }
+    ]
   },
   {
     "Name": "Lockheed Corporation",
     "Country": "US",
-    "FoundingDate": "1926-12-19"
+    "FoundingDate": "1926-12-19",
+    "Description": "Lockheed Martin is a global aerospace, defense, and security company, formed through the merger of Lockheed Corporation and Martin Marietta.",
+    "Aircrafts": [
+      {
+        "Name": "Lockheed L-10 Electra",
+        "Family": "",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "185",
+        "maxPax": "10",
+        "maxCargo": "0",
+        "maxRange": "1300",
+        "IntroductionDate": "1934-01-01",
+        "RetirementDate": "1947-01-01",
+        "minRunwayLength": "1500"
+      },
+      {
+        "Name": "Lockheed L-12 Electra Junior",
+        "Family": "",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "175",
+        "maxPax": "5",
+        "maxCargo": "0",
+        "maxRange": "1000",
+        "IntroductionDate": "1936-01-01",
+        "RetirementDate": "1950-01-01",
+        "minRunwayLength": "1500"
+      },
+      {
+        "Name": "Lockheed Constellation",
+        "Family": "",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "340",
+        "maxPax": "69",
+        "maxCargo": "0",
+        "maxRange": "5000",
+        "IntroductionDate": "1943-01-01",
+        "RetirementDate": "1961-01-01",
+        "minRunwayLength": "3000"
+      }
+    ]
   },
   {
     "Name": "North American Aviation",
     "Country": "US",
-    "FoundingDate": "1928-12-06"
+    "FoundingDate": "1928-12-06",
+    "Description": "North American Aviation was a major American aircraft manufacturer known for producing World War II fighters like the P-51 Mustang and the F-86 Sabre."
   },
   {
     "Name": "Grumman Aircraft Engineering Corporation",
     "Country": "US",
-    "FoundingDate": "1930-12-06"
+    "FoundingDate": "1930-12-06",
+    "Description": "Grumman was an American aerospace company that gained fame for its military aircraft, particularly the F-14 Tomcat and the G-44 Widgeon."
   },
   {
     "Name": "Curtiss-Wright Corporation",
     "Country": "US",
-    "FoundingDate": "1929-07-05"
+    "FoundingDate": "1929-07-05",
+    "Description": "Curtiss-Wright is a global company involved in aerospace and defense, known for producing aircraft engines and military aircraft."
   },
   {
     "Name": "Fairchild Aircraft",
     "Country": "US",
-    "FoundingDate": "1925-02-16"
+    "FoundingDate": "1925-02-16",
+    "Description": "Fairchild Aircraft was known for its innovative designs in both military and civil aviation, producing aircraft like the Fairchild C-119 Flying Boxcar."
   },
   {
     "Name": "Convair (Consolidated Vultee Aircraft Corporation)",
     "Country": "US",
-    "FoundingDate": "1943-03-17"
+    "FoundingDate": "1943-03-17",
+    "Description": "Convair was an American aerospace manufacturer, famous for its Convair 880 and 990 jetliners, as well as the B-36 Peacemaker bomber."
   },
   {
     "Name": "Hawker Aircraft",
     "Country": "GB",
-    "FoundingDate": "1920-04-01"
+    "FoundingDate": "1920-04-01",
+    "Description": "Hawker Aircraft was a British manufacturer known for its fighter aircraft, including the Hawker Hurricane, which played a vital role in WWII."
   },
   {
     "Name": "Supermarine",
     "Country": "GB",
-    "FoundingDate": "1913-01-01"
+    "FoundingDate": "1913-01-01",
+    "Description": "Supermarine is best known for the iconic Spitfire, a British fighter aircraft that was a key asset for the Royal Air Force during WWII."
   },
   {
     "Name": "Avro",
     "Country": "GB",
-    "FoundingDate": "1910-01-01"
+    "FoundingDate": "1910-01-01",
+    "Description": "Avro was a British aircraft manufacturer known for producing the Avro Lancaster bomber and the Avro Vulcan strategic bomber."
   },
   {
     "Name": "Vickers-Armstrongs",
     "Country": "GB",
-    "FoundingDate": "1927-01-01"
+    "FoundingDate": "1927-01-01",
+    "Description": "Vickers-Armstrongs was known for a variety of military aircraft, including the Vickers Wellington and Vickers Viscount airliner."
   },
   {
     "Name": "De Havilland",
     "Country": "GB",
-    "FoundingDate": "1920-09-25"
+    "FoundingDate": "1920-09-25",
+    "Description": "De Havilland was a British aircraft manufacturer famous for the DH.98 Mosquito, a versatile aircraft used in WWII, and the Comet, the first commercial jet airliner."
   },
   {
     "Name": "Bristol Aeroplane Company",
     "Country": "GB",
-    "FoundingDate": "1910-02-19"
+    "FoundingDate": "1910-02-19",
+    "Description": "Bristol Aeroplane Company was known for its innovative aircraft designs, including the Bristol Blenheim bomber and the Bristol Britannia airliner."
   },
   {
     "Name": "Fokker",
     "Country": "NL",
-    "FoundingDate": "1912-07-21"
+    "FoundingDate": "1912-07-21",
+    "Description": "Fokker was a Dutch aviation company famous for its aircraft in WWI and later commercial aircraft, like the Fokker 100.",
+    "Aircrafts": [
+      {
+        "Name": "Fokker F.XII",
+        "Family": "F.XII",
+        "AircraftType": "Passenger",
+        "EngineType": "Prop",
+        "CruisingSpeed": "296",
+        "maxPax": "12",
+        "maxCargo": "544",
+        "maxRange": "1110",
+        "IntroductionDate": "1931-01-01",
+        "RetirementDate": "1947-01-01",
+        "minRunwayLength": "457"
+      }
+    ]
   },
   {
     "Name": "Messerschmitt AG",
     "Country": "DE",
-    "FoundingDate": "1938-07-11"
+    "FoundingDate": "1938-07-11",
+    "Description": "Messerschmitt AG was a German aircraft manufacturer known for the Bf 109 and Me 262, which were pivotal in WWII."
   },
   {
     "Name": "Junkers",
     "Country": "DE",
-    "FoundingDate": "1895-04-01"
+    "FoundingDate": "1895-04-01",
+    "Description": "Junkers was a pioneer in all-metal aircraft design, producing the famous Junkers Ju 52 transport aircraft and several military models."
   },
   {
     "Name": "Heinkel",
     "Country": "DE",
-    "FoundingDate": "1922-12-01"
+    "FoundingDate": "1922-12-01",
+    "Description": "Heinkel was a significant German aircraft manufacturer, known for the He 111 bomber and the He 162 Volksjäger jet."
   },
   {
     "Name": "Fiat Aviazione",
     "Country": "IT",
-    "FoundingDate": "1916-01-01"
+    "FoundingDate": "1916-01-01",
+    "Description": "Fiat Aviazione was an Italian aircraft manufacturer known for its military aircraft, including the CR.42 Falco fighter."
   },
   {
     "Name": "Caproni",
     "Country": "IT",
-    "FoundingDate": "1908-01-01"
+    "FoundingDate": "1908-01-01",
+    "Description": "Caproni was an Italian aircraft manufacturer known for its innovative designs and contributions to both military and commercial aviation."
   },
   {
     "Name": "Savoia-Marchetti",
     "Country": "IT",
-    "FoundingDate": "1915-01-01"
+    "FoundingDate": "1915-01-01",
+    "Description": "Savoia-Marchetti was known for its civil and military aircraft, including the S.55 flying boat and the SM.79 bomber."
   },
   {
     "Name": "Piaggio Aero",
     "Country": "IT",
-    "FoundingDate": "1884-01-01"
+    "FoundingDate": "1884-01-01",
+    "Description": "Piaggio Aero has been involved in aircraft design and manufacturing, producing notable models such as the Piaggio P.180 Avanti."
   },
   {
     "Name": "Macchi",
     "Country": "IT",
-    "FoundingDate": "1912-01-01"
+    "FoundingDate": "1912-01-01",
+    "Description": "Macchi was an Italian aircraft manufacturer best known for its WWII fighters, such as the MC.205 Veltro."
   },
   {
     "Name": "Mitsubishi Heavy Industries",
     "Country": "JP",
-    "FoundingDate": "1934-12-01"
+    "FoundingDate": "1934-12-01",
+    "Description": "Mitsubishi Heavy Industries is a major Japanese corporation involved in the aerospace sector, known for producing military and commercial aircraft."
   },
   {
     "Name": "Nakajima Aircraft Company",
     "Country": "JP",
-    "FoundingDate": "1917-12-01"
+    "FoundingDate": "1917-12-01",
+    "Description": "Nakajima was a prominent Japanese aircraft manufacturer known for its fighters during WWII, such as the Ki-43 Oscar."
   },
   {
     "Name": "Kawanishi Aircraft Company",
     "Country": "JP",
-    "FoundingDate": "1928-01-01"
+    "FoundingDate": "1928-01-01",
+    "Description": "Kawanishi was known for its flying boats, particularly the H6K and H8K models, used by the Imperial Japanese Navy."
   },
   {
     "Name": "Aérospatiale",
     "Country": "FR",
-    "FoundingDate": "1936-01-01"
+    "FoundingDate": "1936-01-01",
+    "Description": "Aérospatiale was a French state-owned aerospace manufacturer involved in the design and production of aircraft, rockets, and satellites."
   },
   {
     "Name": "Sud Aviation",
     "Country": "FR",
-    "FoundingDate": "1957-03-01"
+    "FoundingDate": "1957-03-01",
+    "Description": "Sud Aviation was a French aerospace manufacturer known for the Caravelle jetliner and its involvement in the Airbus consortium."
   },
   {
     "Name": "Farman Aviation Works",
     "Country": "FR",
-    "FoundingDate": "1908-01-01"
+    "FoundingDate": "1908-01-01",
+    "Description": "Farman Aviation Works was known for its pioneering role in early aviation and producing both military and civilian aircraft."
   },
   {
     "Name": "Dassault Aviation",
     "Country": "FR",
-    "FoundingDate": "1929-12-01"
+    "FoundingDate": "1929-12-01",
+    "Description": "Dassault Aviation is a French aerospace company known for its military and business jets, including the Mirage and Falcon series."
   },
   {
     "Name": "Breguet Aviation",
     "Country": "FR",
-    "FoundingDate": "1911-01-01"
+    "FoundingDate": "1911-01-01",
+    "Description": "Breguet Aviation was known for producing innovative aircraft designs and contributed to both military and civilian aviation."
   },
   {
     "Name": "Handley Page",
     "Country": "GB",
-    "FoundingDate": "1909-06-17"
+    "FoundingDate": "1909-06-17",
+    "Description": "Handley Page was a British aircraft manufacturer noted for its bombers in WWI and WWII, including the HP.42 and Halifax."
   },
   {
     "Name": "Short Brothers",
     "Country": "GB",
-    "FoundingDate": "1908-01-01"
+    "FoundingDate": "1908-01-01",
+    "Description": "Short Brothers was known for its flying boats and later produced the Short Belfast, a heavy transport aircraft."
   },
   {
     "Name": "Saab",
     "Country": "SE",
-    "FoundingDate": "1937-04-02"
+    "FoundingDate": "1937-04-02",
+    "Description": "Saab is a Swedish aerospace and defense company known for its fighter aircraft, including the JAS 39 Gripen."
   },
   {
     "Name": "Ilyushin",
     "Country": "RU",
-    "FoundingDate": "1933-01-01"
+    "FoundingDate": "1933-01-01",
+    "Description": "Ilyushin is a Russian aircraft manufacturer known for its strategic bombers and transport aircraft, such as the Il-76."
   },
   {
     "Name": "Tupolev",
     "Country": "RU",
-    "FoundingDate": "1922-10-22"
+    "FoundingDate": "1922-10-22",
+    "Description": "Tupolev is a prominent Russian aircraft manufacturer known for its bombers, notably the Tu-95 and the Tu-154 airliner."
   },
   {
     "Name": "Yakovlev",
     "Country": "RU",
-    "FoundingDate": "1934-01-01"
+    "FoundingDate": "1934-01-01",
+    "Description": "Yakovlev is known for producing military aircraft, especially fighters like the Yak-3 and Yak-9 during WWII."
   },
   {
     "Name": "Antonov",
     "Country": "UA",
-    "FoundingDate": "1946-05-31"
+    "FoundingDate": "1946-05-31",
+    "Description": "Antonov is a Ukrainian aircraft manufacturer known for producing large transport aircraft, including the An-225 Mriya."
   },
   {
     "Name": "Aero Vodochody",
     "Country": "CZ",
-    "FoundingDate": "1919-02-25"
+    "FoundingDate": "1919-02-25",
+    "Description": "Aero Vodochody is a Czech aircraft manufacturer specializing in military aircraft and training jets, such as the L-39 Albatros."
   },
   {
     "Name": "Avia",
     "Country": "CZ",
-    "FoundingDate": "1919-01-01"
+    "FoundingDate": "1919-01-01",
+    "Description": "Avia is known for its fighter aircraft and has a rich history in Czechoslovak aviation, producing models like the Avia B-534."
   },
   {
     "Name": "Letov",
     "Country": "CZ",
-    "FoundingDate": "1918-01-01"
+    "FoundingDate": "1918-01-01",
+    "Description": "Letov was a Czech aircraft manufacturer known for its innovative designs and military aircraft during both World Wars."
   },
   {
     "Name": "Embraer",
     "Country": "BR",
-    "FoundingDate": "1969-08-19"
+    "FoundingDate": "1969-08-19",
+    "Description": "Embraer is a Brazilian aerospace company known for producing regional jets and military aircraft, including the Embraer EMB 120 and A-29 Super Tucano."
   }
 ]

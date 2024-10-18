@@ -12,28 +12,33 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListView ItemsSource="{Binding Manufacturers}" Grid.Column="0" SelectedItem="{Binding SelectedManufacturer}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
+        <GroupBox Padding="0" Margin="10,10,0,10">
+            <GroupBox.Header>
+                <Label Content="Manufacturers" FontWeight="Bold"/>
+            </GroupBox.Header>
+            <ListView ItemsSource="{Binding Manufacturers}" Grid.Column="0" SelectedItem="{Binding SelectedManufacturer}" MouseDoubleClick="NavigateManufacturerClick" BorderThickness="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
 
-                    <GridViewColumn Header="Founding Date" DisplayMemberBinding="{Binding FormattedFoundingDate}" Width="Auto"/>
+                        <GridViewColumn Header="Founding Date" DisplayMemberBinding="{Binding FormattedFoundingDate}" Width="Auto"/>
 
-                    <GridViewColumn Header="Country">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border BorderThickness="1" BorderBrush="DarkSlateGray" CornerRadius="2">
-                                        <Image Source="{Binding Path=Country.FlagPath}" Stretch="Fill" Height="15" Width="30" />
-                                    </Border>
-                                    <TextBlock Text="{Binding Country.Name}" Margin="5,0,0,0"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ContentControl Content="{Binding DetailViewModel}" Grid.Column="1" Margin="0"/>
+                        <GridViewColumn Header="Country">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="1" BorderBrush="DarkSlateGray" CornerRadius="2">
+                                            <Image Source="{Binding Path=Country.FlagPath}" Stretch="Fill" Height="15" Width="30" />
+                                        </Border>
+                                        <TextBlock Text="{Binding Country.Name}" Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+        <ContentControl Content="{Binding CurrentDetailView}" Grid.Column="1" Margin="10"/>
     </Grid>
 </UserControl>

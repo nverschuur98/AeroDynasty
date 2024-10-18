@@ -52,8 +52,13 @@
         <AirlinerViews:AirlinersOwnedView />
     </DataTemplate>
 
+    <!-- MANUFACTURERS -->
     <DataTemplate DataType="{x:Type AircraftModelViews:ManufacturersOverviewViewModel}">
         <AircraftViews:ManufacturersOverviewView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type AircraftModelViews:ManufacturerViewModel}">
+        <AircraftViews:ManufacturerView />
     </DataTemplate>
 
     <!-- SETTINGS -->

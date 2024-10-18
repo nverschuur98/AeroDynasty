@@ -25,7 +25,14 @@
             <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" FontSize="14"/>
         </StackPanel>
 
-        <ListView ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" Grid.Row="2" MouseDoubleClick="NavigateAirportDetailsClick">
+        <ListView ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" Grid.Row="2">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="NavigateAirportDetailsClick" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.Resources>
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto" />
