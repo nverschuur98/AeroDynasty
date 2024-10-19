@@ -17,7 +17,7 @@ namespace AeroDynasty.Services
         }
 
         // Save the current game state to a JSON file
-        public static async Task SaveGame(GameViewModel gameViewModel, string filePath)
+        public static async Task SaveGame(GameData gameData, string filePath)
         {
             await Task.CompletedTask;
 
@@ -25,7 +25,7 @@ namespace AeroDynasty.Services
         }
 
         // Load the game state from a JSON file and apply it to the GameViewModel
-        public static void LoadGame(GameViewModel gameViewModel, string filePath)
+        public static void LoadGame(GameData gameData, string filePath)
         {
             throw new NotImplementedException();
         }

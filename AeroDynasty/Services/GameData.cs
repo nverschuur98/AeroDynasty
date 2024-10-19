@@ -5,6 +5,7 @@ using AeroDynasty.Models.AirlinerModels;
 using AeroDynasty.Models.AirportModels;
 using AeroDynasty.Models.Core;
 using AeroDynasty.Models.RouteModels;
+using AeroDynasty.ModelViews;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -14,11 +15,12 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml.Linq;
 
 namespace AeroDynasty.Services
 {
-    public class GameData
+    public class GameData : BaseViewModel
     {
         //Singleton Instance
         private static GameData _instance;
@@ -34,17 +36,27 @@ namespace AeroDynasty.Services
         public ObservableCollection<AircraftModel> AircraftModels { get; private set; }
 
         //Observable change Data
-        public ObservableCollection<Route> Routes { get; private set; }
-        public ObservableCollection<Airliner> Airliners { get; private set; }
+        public ObservableCollection<Route> Routes { get; set; }
+        public ObservableCollection<Airliner> Airliners { get; set; }
 
         //Maps
         public Dictionary<string, Country> CountryMap { get; private set; }
+        public Dictionary<int, double> Inflations { get; private set; }
+
+        //Game Time and state
+        private DateTime _currentDate;
+        private bool _isPaused;
+
+        //Commands
+        public ICommand PlayCommand { get; set; }
+        public ICommand PauseCommand { get; set; }
 
         //Private Constructor
         private GameData()
         {
             //Load Core first
             LoadCountries();
+            LoadInflations();
 
             //Load non-change data
             LoadAirlines();
@@ -55,9 +67,21 @@ namespace AeroDynasty.Services
             //Load change data
             LoadRoutes();
             LoadAirliners();
+
+            //Init start date
+            CurrentDate = new DateTime(1946, 1, 1);
+            _isPaused = true;
+
+            //Bind commands
+            PlayCommand = new RelayCommand(PlayGame);
+            PauseCommand = new RelayCommand(PauseGame);
         }
 
-        //Functions
+        #region Loading functions
+        /// <summary>
+        /// Loading the airline data from the data files
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         private void LoadAirlines()
         {
             try
@@ -99,6 +123,10 @@ namespace AeroDynasty.Services
             }
         }
 
+        /// <summary>
+        /// Loading the airport data from the data files
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         private void LoadAirports()
         {
             try
@@ -148,6 +176,9 @@ namespace AeroDynasty.Services
             }
         }
 
+        /// <summary>
+        /// [TEST] Loading the routes from the save files
+        /// </summary>
         private void LoadRoutes()
         {
             Airport _origin = Airports.FirstOrDefault(airport => airport.ICAO == "EHAM");
@@ -166,6 +197,9 @@ namespace AeroDynasty.Services
             Routes.Add(_route2);
         }
 
+        /// <summary>
+        /// Loading the country data from the data files
+        /// </summary>
         private void LoadCountries()
         {
             var countries = JSONDataLoader.LoadFromFile<Country>("Assets/CountryData.json");
@@ -175,6 +209,29 @@ namespace AeroDynasty.Services
             CountryMap = Countries.ToDictionary(c => c.ISOCode, c => c);
         }
 
+        /// <summary>
+        /// Loading the inflation data from the data files
+        /// </summary>
+        private void LoadInflations()
+        {
+            string JSONString = File.ReadAllText("Assets/InflationData.json");
+            JsonDocument JSONDoc = JsonDocument.Parse(JSONString);
+            JsonElement Inflation = JSONDoc.RootElement.GetProperty("inflation_data");
+
+            Inflations = new Dictionary<int, double>();
+
+            foreach (var year in Inflation.EnumerateObject())
+            {
+                int y = Convert.ToInt32(year.Name);
+                double i = year.Value.GetDouble();
+                Inflations.Add(y, i);
+            }
+        }
+
+        /// <summary>
+        /// Loading the manufacturer data from the data files
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         private void LoadManufacturers()
         {
             string JSONString = File.ReadAllText("Assets/ManufacturerData.json");
@@ -184,7 +241,7 @@ namespace AeroDynasty.Services
             //Create a list to hold the manufacturers
             var manufacturers = new List<Manufacturer>();
 
-            foreach(JsonElement manufacturer in JSONRoot.EnumerateArray())
+            foreach (JsonElement manufacturer in JSONRoot.EnumerateArray())
             {
                 //Extract data
                 string Name = manufacturer.GetProperty("Name").ToString();
@@ -198,12 +255,13 @@ namespace AeroDynasty.Services
                     throw new Exception($"Failed to convert {manufacturer.GetProperty("FoundingDate").ToString()} into DateTime");
                 }
 
-                if (!CountryMap.TryGetValue(CountryCode, out Country)) {
+                if (!CountryMap.TryGetValue(CountryCode, out Country))
+                {
                     throw new Exception($"Failed to convert {CountryCode} into a country");
                 }
 
                 //Add to local list
-                manufacturers.Add(new Manufacturer(Name,Description, Country, FoundingDate));
+                manufacturers.Add(new Manufacturer(Name, Description, Country, FoundingDate));
 
             }
 
@@ -211,6 +269,9 @@ namespace AeroDynasty.Services
             Manufacturers = new ObservableCollection<Manufacturer>(manufacturers);
         }
 
+        /// <summary>
+        /// Loading the aircraft data from the data files
+        /// </summary>
         private void LoadAircrafts()
         {
             string JSONString = File.ReadAllText("Assets/ManufacturerData.json");
@@ -221,7 +282,7 @@ namespace AeroDynasty.Services
             var aircrafts = new List<AircraftModel>();
 
             //Loop trough all the manufacturers and process the aircrafts
-            foreach(JsonElement manufacturer in JSONRoot.EnumerateArray())
+            foreach (JsonElement manufacturer in JSONRoot.EnumerateArray())
             {
                 // Use LINQ to find the manufacturer by name
                 Manufacturer Manufacturer = Manufacturers.FirstOrDefault(m => m.Name.Equals(manufacturer.GetProperty("Name").ToString(), StringComparison.OrdinalIgnoreCase));
@@ -259,7 +320,9 @@ namespace AeroDynasty.Services
 
         }
 
-        //To Extend
+        /// <summary>
+        /// [TEST] Loading the airliners from the save files
+        /// </summary>
         private void LoadAirliners()
         {
             Airliners = new ObservableCollection<Airliner>();
@@ -271,5 +334,77 @@ namespace AeroDynasty.Services
 
             Airliners.Add(dum);
         }
+        #endregion
+
+        #region Game functions
+
+        public string FormattedCurrentDate => CurrentDate.ToString("dd-MMM-yyyy");
+
+        public DateTime CurrentDate
+        {
+            get => _currentDate;
+            set
+            {
+                _currentDate = value;
+                OnPropertyChanged(nameof(CurrentDate));
+            }
+        }
+
+        public bool IsPaused
+        {
+            get { return _isPaused; }
+            set
+            {
+                _isPaused = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void PlayGame()
+        {
+            IsPaused = false;
+            StartGameTimer();
+        }
+
+        private void PauseGame()
+        {
+            IsPaused = true;
+        }
+
+        private async void StartGameTimer()
+        {
+            while (!IsPaused)
+            {
+                await Task.Delay(1000); //Simulate a day per second
+                CurrentDate = CurrentDate.AddDays(1);
+                //UpdateAirlines();
+            }
+        }
+
+        public void SaveGame(string filePath)
+        {
+            bool wasPlaying = !IsPaused;
+
+            if (wasPlaying)
+            {
+                PauseCommand.Execute(null);
+            }
+
+            // Use GameStateManager to save the game
+            GameStateManager.SaveGame(this, filePath);
+
+            if (wasPlaying)
+            {
+                PlayCommand.Execute(null);
+            }
+        }
+
+        public void LoadGame(string filePath)
+        {
+            // Use GameStateManager to load the game
+            GameStateManager.LoadGame(this, filePath);
+        }
+
+        #endregion
     }
 }

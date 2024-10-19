@@ -1,16 +1,14 @@
 ﻿using AeroDynasty.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AeroDynasty.Models.Core;
 
 namespace AeroDynasty.Models.AircraftModels
 {
+
     public class AircraftModel
     {
         public string Name { get; private set; }
         public string Family { get; private set; }
+        public Price Price { get; private set; }
         public AircraftType Type { get; private set; }
         public EngineType EngineType { get; private set; }
         public int CruisingSpeed { get; private set; } //in km/h
@@ -40,6 +38,8 @@ namespace AeroDynasty.Models.AircraftModels
         {
             Name = name;
             Family = family;
+            Price = new Price(100000);
+            Price.calcInflation(3.0);
             Type = type;
             EngineType = engineType;
             CruisingSpeed = cruisingSpeed;

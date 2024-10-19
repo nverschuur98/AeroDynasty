@@ -16,13 +16,20 @@
         <!-- Header -->
         <GroupBox Grid.Row="0" Height="auto">
             <GroupBox.Header>
-                <Label Content="{Binding Manufacturer.Name}" FontWeight="Bold" />
+                <Label Content="{Binding Manufacturer.Name}" FontWeight="Bold"/>
             </GroupBox.Header>
             <StackPanel>
-                <Label Content="{Binding Manufacturer.Description}" BorderThickness="0"/>
+                <Label Content="{Binding Manufacturer.Description}" BorderThickness="0" Padding="2" Margin="0,0,0,10"/>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Founding Date: " BorderThickness="0"/>
-                    <Label Content="{Binding Manufacturer.FormattedFoundingDate}" BorderThickness="0"/>
+                    <Label Content="Founding Date: " BorderThickness="0" Padding="2"/>
+                    <Label Content="{Binding Manufacturer.FormattedFoundingDate}" BorderThickness="0" Padding="2"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Country: " BorderThickness="0" Padding="2" />
+                    <Border BorderThickness="1" BorderBrush="DarkSlateGray" CornerRadius="2" Height="15">
+                        <Image Source="{Binding Path=Manufacturer.Country.FlagPath}" Stretch="Fill" Width="25" />
+                    </Border>
+                    <Label Content="{Binding Manufacturer.Country.Name}" Margin="5,0,0,0" Padding="2"/>
                 </StackPanel>
             </StackPanel>
         </GroupBox>

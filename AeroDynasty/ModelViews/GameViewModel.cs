@@ -8,14 +8,13 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Input;
+using System.ComponentModel;
 
 namespace AeroDynasty.ModelViews
 {
     public class GameViewModel : BaseViewModel
     {
         private object _currentViewModel;
-        private DateTime _currentDate;
-        private bool _isPaused;
 
         public object CurrentViewModel
         {
@@ -27,25 +26,15 @@ namespace AeroDynasty.ModelViews
             }
         }
 
-        public DateTime CurrentDate
+        public DateTime CurrentDate;
+
+
+        public string FormattedCurrentDate
         {
-            get { return _currentDate; }
-            set
-            {
-                _currentDate = value;
-                OnPropertyChanged();
-            }
+            get { return GameData.Instance.FormattedCurrentDate; }
         }
 
-        public bool IsPaused
-        {
-            get { return _isPaused; }
-            set
-            {
-                _isPaused = value;
-                OnPropertyChanged();
-            }
-        }
+
 
         #region COMMANDOS
         public ICommand PlayCommand { get; set; }
@@ -62,8 +51,11 @@ namespace AeroDynasty.ModelViews
 
         public GameViewModel()
         {
-            //Init start date
-            _currentDate = new DateTime(1946,1,1);
+
+            CurrentDate = GameData.Instance.CurrentDate;
+
+            // Subscribe to PropertyChanged event of GameData
+            GameData.Instance.PropertyChanged += GameData_PropertyChanged;
 
             //Commands to handle the game
             PlayCommand = new RelayCommand(PlayGame);
@@ -77,24 +69,12 @@ namespace AeroDynasty.ModelViews
             NavigateAirlinersCommand = new RelayCommand(NavigateAirliners);
             NavigateSettingsCommand = new RelayCommand(NavigateSettings);
 
-            //Pause the game at start
-            _isPaused = false;
-
             //Set home screen
             NavigateHome();
         }
 
         #region COMMANDO FUNCTIONS
-        private void PlayGame()
-        {
-            IsPaused = false;
-            StartGameTimer();
-        }
-
-        private void PauseGame()
-        {
-            IsPaused = true;
-        }
+        
 
         private void NavigateHome()
         {
@@ -128,38 +108,23 @@ namespace AeroDynasty.ModelViews
         #endregion
 
         #region FUNCTIONS
-        private async void StartGameTimer()
+        private void PlayGame()
         {
-            while (!IsPaused)
-            {
-                await Task.Delay(1000); //Simulate a day per second
-                CurrentDate = CurrentDate.AddDays(1);
-                //UpdateAirlines();
-            }
+            GameData.Instance.PlayCommand.Execute(null);
         }
 
-        public void SaveGame(string filePath)
+        private void PauseGame()
         {
-            bool wasPlaying = !IsPaused;
-
-            if (wasPlaying)
-            {
-                PauseCommand.Execute(null);
-            }
-
-            // Use GameStateManager to save the game
-            GameStateManager.SaveGame(this, filePath);
-
-            if (wasPlaying)
-            {
-                PlayCommand.Execute(null);
-            }
+            GameData.Instance.PauseCommand.Execute(null);
         }
 
-        public void LoadGame(string filePath)
+        // Event handler for when properties change in GameData
+        private void GameData_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            // Use GameStateManager to load the game
-            GameStateManager.LoadGame(this, filePath);
+            if (e.PropertyName == nameof(GameData.CurrentDate))
+            {
+                OnPropertyChanged(nameof(FormattedCurrentDate)); // Notify that FormattedCurrentDate has changed
+            }
         }
 
         #endregion
