@@ -38,53 +38,39 @@
             <GroupBox.Header>
                 <Label Content="Catalog" FontWeight="Bold" />
             </GroupBox.Header>
-            
-            <ListView Grid.Row="1" ItemsSource="{Binding AircraftFamiliesForBinding}" BorderThickness="0">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </ListView.ItemContainerStyle>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                            <Expander.Header>
-                                <!-- Use MultiBinding to combine static and dynamic text -->
-                                <TextBlock>
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}Family: {0}">
-                                            <Binding Path="Key" />
-                                            <!-- Bind the FamilyName (Key) -->
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                            </Expander.Header>
-                            <ListView ItemsSource="{Binding Value}" HorizontalContentAlignment="Stretch" BorderThickness="0">
-                                <ListView.Resources>
-                                    <Style TargetType="ListViewItem">
-                                        <EventSetter Event="MouseDoubleClick" Handler="OpenAircraftBuyClick" />
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    </Style>
-                                </ListView.Resources>
-
-                                <ListView.View>
-                                    <GridView AllowsColumnReorder="False">
-                                        <GridViewColumn Header="Model Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
-                                        <GridViewColumn Header="Aircraft Type" DisplayMemberBinding="{Binding Type}" />
-                                        <GridViewColumn Header="Engine Type" DisplayMemberBinding="{Binding EngineType}" />
-                                        <GridViewColumn Header="Cruising Speed" DisplayMemberBinding="{Binding CruisingSpeed}" />
-                                        <GridViewColumn Header="Max PAX" DisplayMemberBinding="{Binding maxPax}" />
-                                        <GridViewColumn Header="Max Cargo" DisplayMemberBinding="{Binding maxCargo}" />
-                                        <GridViewColumn Header="Max Range" DisplayMemberBinding="{Binding maxRange}" />
-                                        <GridViewColumn Header="Min Runway Length" DisplayMemberBinding="{Binding minRunwayLength}" />
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                        </Expander>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <DataGrid ItemsSource="{Binding AircraftBuyList, Mode=OneWay}" SelectionMode="Single" AutoGenerateColumns="False" CanUserReorderColumns="False" Background="Transparent" BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding AircraftModel.Name, Mode=OneWay}" Width="*" />
+                    <DataGridTextColumn Header="Family" Binding="{Binding AircraftModel.Family, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Type" Binding="{Binding AircraftModel.Type, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Engine Type" Binding="{Binding AircraftModel.EngineType, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Max Pax" Binding="{Binding AircraftModel.maxPax, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Max Cargo" Binding="{Binding AircraftModel.maxCargo, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Max Range" Binding="{Binding AircraftModel.maxRange, Mode=OneWay, StringFormat='{}{0} m'}" />
+                    <DataGridTextColumn Header="Min Runway Length" Binding="{Binding AircraftModel.minRunwayLength, Mode=OneWay, StringFormat='{}{0} m'}" />
+                    <DataGridTextColumn Header="Introduction Date" Binding="{Binding AircraftModel.FormattedIntroductionDate, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Price" Binding="{Binding AircraftModel.Price.Amount, Mode=OneWay, StringFormat=C}">
+                            <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Right" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Order Quantity" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="1" CornerRadius="3" Margin=" 2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Center" BorderThickness="0"/>
+                                        <Button Content="BUY" Command="{Binding BuyUserAircraftCommand}" Width="42" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </GroupBox>
 
         <GroupBox Grid.Row="2">

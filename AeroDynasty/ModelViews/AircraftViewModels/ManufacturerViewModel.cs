@@ -67,6 +67,24 @@ namespace AeroDynasty.ModelViews.AircraftViewModels
             }
         }
 
+        public ObservableCollection<AircraftBuy> AircraftBuyList
+        {
+            get
+            {
+                if (FilteredAircraftModels == null)
+                {
+                    return new ObservableCollection<AircraftBuy>();
+                }
+
+                ObservableCollection<AircraftBuy> list = new ObservableCollection<AircraftBuy>();
+                foreach (AircraftModel air in FilteredAircraftModels) {
+                    list.Add(new AircraftBuy(air, 0));
+                }
+
+                return list;
+            }
+        }
+
         /// <summary>
         /// Returns a Dictionary<string, ObservableCollection<AircraftModel>>
         /// </summary>
