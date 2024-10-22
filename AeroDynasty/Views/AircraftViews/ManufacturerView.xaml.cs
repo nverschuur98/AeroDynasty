@@ -26,24 +26,5 @@ namespace AeroDynasty.Views.AircraftViews
         {
             InitializeComponent();
         }
-
-        private void OpenAircraftBuyClick(object sender, MouseButtonEventArgs e)
-        {
-            if (sender is ListViewItem item)
-            {
-                try
-                {
-                    // Access the DataContext, which should be the ViewModel
-                    var viewModel = DataContext as ManufacturerViewModel;
-
-                    // Execute the command with the selected airport as a parameter
-                    viewModel?.OpenAircraftBuyCommand.Execute(null);
-                }
-                catch
-                {
-                    throw new Exception("Something went wrong trying to execute the command.");
-                }
-            }
-        }
     }
 }
