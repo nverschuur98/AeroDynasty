@@ -28,6 +28,26 @@
         </Setter>
     </Style>
 
+    <!-- Header Button Style -->
+    <Style x:Key="PlayButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#3498db"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="2,0,2,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!-- Menu Button Style -->
     <Style x:Key="MenuButtonStyle" TargetType="MenuItem">
         <Setter Property="Foreground" Value="White"/>
