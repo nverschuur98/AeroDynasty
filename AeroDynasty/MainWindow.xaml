@@ -23,11 +23,17 @@
         <StackPanel Grid.Row="0" Orientation="Vertical" Background="#2c3e50" Margin="0">
 
             <!-- Top Controls (Play/Pause, Date) -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,0">
-                <TextBlock Text="Date:" VerticalAlignment="Center" Foreground="White" Margin="0"/>
-                <TextBlock Text="{Binding FormattedCurrentDate}" VerticalAlignment="Center" Foreground="White" MinWidth="150" HorizontalAlignment="Left"/>
-                <Button Content="Play" Command="{Binding PlayCommand}" Padding="5" Style="{StaticResource HeaderButtonStyle}"/>
-                <Button Content="Pause" Command="{Binding PauseCommand}" Padding="5" Style="{StaticResource HeaderButtonStyle}"/>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,0">
+                    <TextBlock Text="Date:" VerticalAlignment="Center" Foreground="White" Margin="0"/>
+                    <TextBlock Text="{Binding FormattedCurrentDate}" VerticalAlignment="Center" Foreground="White" MinWidth="150" HorizontalAlignment="Left"/>
+                    <Button Content="Play" Command="{Binding PlayCommand}" Padding="5" Style="{StaticResource HeaderButtonStyle}"/>
+                    <Button Content="Pause" Command="{Binding PauseCommand}" Padding="5" Style="{StaticResource HeaderButtonStyle}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,0">
+                    <TextBlock Text="Date:" VerticalAlignment="Center" Foreground="White" Margin="0"/>
+                    <TextBlock Text="{Binding UserData.Airline.CashBalance}" VerticalAlignment="Center" Foreground="White" MinWidth="150" HorizontalAlignment="Left"/>
+                </StackPanel>
             </StackPanel>
 
             <!-- Menu Navigation -->

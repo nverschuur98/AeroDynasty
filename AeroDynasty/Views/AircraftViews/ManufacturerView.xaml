@@ -47,7 +47,7 @@
                     <DataGridTextColumn Header="Engine Type" Binding="{Binding AircraftModel.EngineType, Mode=OneWay}" />
                     <DataGridTextColumn Header="Max Pax" Binding="{Binding AircraftModel.maxPax, Mode=OneWay}" />
                     <DataGridTextColumn Header="Max Cargo" Binding="{Binding AircraftModel.maxCargo, Mode=OneWay}" />
-                    <DataGridTextColumn Header="Max Range" Binding="{Binding AircraftModel.maxRange, Mode=OneWay, StringFormat='{}{0} m'}" />
+                    <DataGridTextColumn Header="Max Range" Binding="{Binding AircraftModel.maxRange, Mode=OneWay, StringFormat='{}{0} km'}" />
                     <DataGridTextColumn Header="Min Runway Length" Binding="{Binding AircraftModel.minRunwayLength, Mode=OneWay, StringFormat='{}{0} m'}" />
                     <DataGridTextColumn Header="Introduction Date" Binding="{Binding AircraftModel.FormattedIntroductionDate, Mode=OneWay}" />
                     <DataGridTextColumn Header="Price" Binding="{Binding AircraftModel.Price.Amount, Mode=OneWay, StringFormat=C}">

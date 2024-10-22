@@ -8,6 +8,7 @@ using AeroDynasty.Models.RouteModels;
 using AeroDynasty.ModelViews;
 using System;
 using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -44,6 +45,7 @@ namespace AeroDynasty.Services
         public Dictionary<int, double> Inflations { get; private set; }
 
         //Game Time and state
+        public UserData UserData { get; private set; }
         private DateTime _currentDate;
         private bool _isPaused;
 
@@ -69,6 +71,10 @@ namespace AeroDynasty.Services
             LoadAirliners();
 
             //Init start date
+            Airline arl = Airlines.Where(al => al.Name.Contains("KLM")).FirstOrDefault();
+
+            UserData = new UserData(arl);
+
             CurrentDate = new DateTime(1946, 1, 1);
             _isPaused = true;
 

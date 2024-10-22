@@ -33,6 +33,8 @@ namespace AeroDynasty.Models.AircraftModels
 
         private void BuyUserAircraft()
         {
+            Airline buyer = GameData.Instance.UserData.Airline;
+
             if(Amount <= 0)
             {
                 return;
@@ -43,9 +45,21 @@ namespace AeroDynasty.Models.AircraftModels
                 Airliner air = new Airliner();
                 air.Model = AircraftModel;
                 air.Registration = "PH-XXX";
-                air.Owner = GameData.Instance.Airlines[0];
+                air.Owner = buyer;
 
-                GameData.Instance.Airliners.Add(air);
+                //Check if sufficient money available
+                if (buyer.SufficientCash(AircraftModel.Price))
+                {
+                    buyer.SubtractCash(AircraftModel.Price);
+
+                    GameData.Instance.Airliners.Add(air);
+                }
+                else
+                {
+                    //Not enough money available
+                    return;
+                }
+
             }
         }
     }
