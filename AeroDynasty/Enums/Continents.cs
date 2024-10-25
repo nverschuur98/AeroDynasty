@@ -14,7 +14,7 @@ namespace AeroDynasty.Enums
         Europe,
         NorthAmerica,
         SouthAmerica,
-        Australia
+        Oceania
     }
 
 }

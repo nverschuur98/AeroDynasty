@@ -16,7 +16,8 @@
         "maxRange": "6437",
         "IntroductionDate": "1947-07-08",
         "RetirementDate": "1963-01-01",
-        "minRunwayLength": "2300"
+        "minRunwayLength": "2300",
+        "Price": "1200000"
       },
       {
         "Name": "Boeing 377-10",
@@ -29,7 +30,8 @@
         "maxRange": "6400",
         "IntroductionDate": "1949-01-01",
         "RetirementDate": "1965-01-01",
-        "minRunwayLength": "2300"
+        "minRunwayLength": "2300",
+        "Price": "1200000"
       },
       {
         "Name": "Boeing 377-18",
@@ -42,7 +44,8 @@
         "maxRange": "6200",
         "IntroductionDate": "1950-01-01",
         "RetirementDate": "1966-01-01",
-        "minRunwayLength": "2300"
+        "minRunwayLength": "2300",
+        "Price": "1200000"
       },
       {
         "Name": "Boeing 314 Clipper",
@@ -55,7 +58,8 @@
         "maxRange": "5800",
         "IntroductionDate": "1939-03-20",
         "RetirementDate": "1951-01-01",
-        "minRunwayLength": "2000"
+        "minRunwayLength": "2000",
+        "Price": "500000"
       },
       {
         "Name": "Boeing 314A Clipper",
@@ -68,7 +72,8 @@
         "maxRange": "6100",
         "IntroductionDate": "1941-01-01",
         "RetirementDate": "1950-01-01",
-        "minRunwayLength": "2000"
+        "minRunwayLength": "2000",
+        "Price": "500000"
       },
       {
         "Name": "Boeing 307 Stratoliner",
@@ -81,7 +86,8 @@
         "maxRange": "3780",
         "IntroductionDate": "1938-12-31",
         "RetirementDate": "1975-01-01",
-        "minRunwayLength": "1800"
+        "minRunwayLength": "1800",
+        "Price": "315000"
       },
       {
         "Name": "Boeing 307B Stratoliner",
@@ -94,7 +100,8 @@
         "maxRange": "4000",
         "IntroductionDate": "1945-01-01",
         "RetirementDate": "1960-01-01",
-        "minRunwayLength": "1800"
+        "minRunwayLength": "1800",
+        "Price": "315000"
       },
       {
         "Name": "Boeing 247",
@@ -107,7 +114,8 @@
         "maxRange": "1200",
         "IntroductionDate": "1933-02-08",
         "RetirementDate": "1952-01-01",
-        "minRunwayLength": "1500"
+        "minRunwayLength": "1500",
+        "Price": "62500"
       },
       {
         "Name": "Boeing 247D",
@@ -120,7 +128,8 @@
         "maxRange": "1200",
         "IntroductionDate": "1934-01-01",
         "RetirementDate": "1950-01-01",
-        "minRunwayLength": "1500"
+        "minRunwayLength": "1500",
+        "Price": "62500"
       }
     ]
   },
@@ -141,7 +150,8 @@
         "maxRange": "2000",
         "IntroductionDate": "1936-06-17",
         "RetirementDate": "1960-01-01",
-        "minRunwayLength": "1500"
+        "minRunwayLength": "1500",
+        "Price": "100000"
       },
       {
         "Name": "Douglas DC-3C",
@@ -154,7 +164,8 @@
         "maxRange": "2000",
         "IntroductionDate": "1941-01-01",
         "RetirementDate": "1965-01-01",
-        "minRunwayLength": "1500"
+        "minRunwayLength": "1500",
+        "Price": "100000"
       },
       {
         "Name": "Douglas DC-3T",
@@ -167,7 +178,8 @@
         "maxRange": "1500",
         "IntroductionDate": "1945-01-01",
         "RetirementDate": "1975-01-01",
-        "minRunwayLength": "1500"
+        "minRunwayLength": "1500",
+        "Price": "100000"
       },
       {
         "Name": "Douglas DC-4",
@@ -180,7 +192,8 @@
         "maxRange": "3800",
         "IntroductionDate": "1942-01-01",
         "RetirementDate": "1958-01-01",
-        "minRunwayLength": "2500"
+        "minRunwayLength": "1800",
+        "Price": "1000000"
       },
       {
         "Name": "Douglas DC-4E",
@@ -193,7 +206,8 @@
         "maxRange": "4500",
         "IntroductionDate": "1939-01-01",
         "RetirementDate": "1955-01-01",
-        "minRunwayLength": "2500"
+        "minRunwayLength": "1800",
+        "Price": "1000000"
       },
       {
         "Name": "Douglas DC-4-1009",
@@ -206,7 +220,8 @@
         "maxRange": "3800",
         "IntroductionDate": "1946-01-01",
         "RetirementDate": "1958-01-01",
-        "minRunwayLength": "2500"
+        "minRunwayLength": "1800",
+        "Price": "1000000"
       },
       {
         "Name": "Douglas DC-6",
@@ -219,7 +234,8 @@
         "maxRange": "4000",
         "IntroductionDate": "1946-01-01",
         "RetirementDate": "1988-01-01",
-        "minRunwayLength": "3000"
+        "minRunwayLength": "1100",
+        "Price": "1200000"
       },
       {
         "Name": "Douglas DC-6A",
@@ -232,7 +248,8 @@
         "maxRange": "4200",
         "IntroductionDate": "1947-01-01",
         "RetirementDate": "1970-01-01",
-        "minRunwayLength": "3000"
+        "minRunwayLength": "1100",
+        "Price": "1200000"
       },
       {
         "Name": "Douglas DC-6B",
@@ -245,7 +262,8 @@
         "maxRange": "4400",
         "IntroductionDate": "1947-01-01",
         "RetirementDate": "1970-01-01",
-        "minRunwayLength": "3000"
+        "minRunwayLength": "1100",
+        "Price": "1200000"
       },
       {
         "Name": "Douglas DC-6C",
@@ -258,7 +276,8 @@
         "maxRange": "4500",
         "IntroductionDate": "1951-01-01",
         "RetirementDate": "1980-01-01",
-        "minRunwayLength": "3000"
+        "minRunwayLength": "1100",
+        "Price": "1200000"
       }
     ]
   },
@@ -279,7 +298,8 @@
         "maxRange": "1300",
         "IntroductionDate": "1934-01-01",
         "RetirementDate": "1947-01-01",
-        "minRunwayLength": "1500"
+        "minRunwayLength": "1500",
+        "Price": "150000"
       },
       {
         "Name": "Lockheed L-12 Electra Junior",
@@ -292,7 +312,8 @@
         "maxRange": "1000",
         "IntroductionDate": "1936-01-01",
         "RetirementDate": "1950-01-01",
-        "minRunwayLength": "1500"
+        "minRunwayLength": "1500",
+        "Price": "150000"
       },
       {
         "Name": "Lockheed Constellation",
@@ -305,7 +326,8 @@
         "maxRange": "5000",
         "IntroductionDate": "1943-01-01",
         "RetirementDate": "1961-01-01",
-        "minRunwayLength": "3000"
+        "minRunwayLength": "2500",
+        "Price": "750000"
       }
     ]
   },
@@ -392,7 +414,8 @@
         "maxRange": "1110",
         "IntroductionDate": "1931-01-01",
         "RetirementDate": "1947-01-01",
-        "minRunwayLength": "457"
+        "minRunwayLength": "457",
+        "Price":  "40000"
       }
     ]
   },

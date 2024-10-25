@@ -11,6 +11,7 @@ using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Metrics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ namespace AeroDynasty.Services
 
         //Observable Core Data
         public ObservableCollection<Country> Countries { get; private set; }
+        public ObservableCollection<RegistrationTemplate> RegistrationTemplates { get; set; }
 
         //Observable non-change Data
         public ObservableCollection<Airline> Airlines { get; private set; }
@@ -42,6 +44,7 @@ namespace AeroDynasty.Services
 
         //Maps
         public Dictionary<string, Country> CountryMap { get; private set; }
+        public Dictionary<Country, RegistrationTemplate> RegistrationTemplateMap { get; set; }
         public Dictionary<int, double> Inflations { get; private set; }
 
         //Game Time and state
@@ -67,6 +70,7 @@ namespace AeroDynasty.Services
             LoadAircrafts();
 
             //Load change data
+            //THIS NEEDS TO MOVE UNTILL AFTER THE CTOR IS FULLY INITIALIZED
             LoadRoutes();
             LoadAirliners();
 
@@ -176,9 +180,9 @@ namespace AeroDynasty.Services
                 // Assign the populated list to the ObservableCollection
                 Airports = new ObservableCollection<Airport>(airports);
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception($"Error while loading airports.");
+                throw new Exception(ex.Message);
             }
         }
 
@@ -208,11 +212,44 @@ namespace AeroDynasty.Services
         /// </summary>
         private void LoadCountries()
         {
-            var countries = JSONDataLoader.LoadFromFile<Country>("Assets/CountryData.json");
-            Countries = new ObservableCollection<Country>(countries);
+            string JSONString = File.ReadAllText("Assets/CountryData.json");
+            JsonDocument JSONDoc = JsonDocument.Parse(JSONString);
+            JsonElement JSONRoot = JSONDoc.RootElement;
+
+            Countries = new ObservableCollection<Country>();
+            RegistrationTemplates = new ObservableCollection<RegistrationTemplate>();
+
+            foreach (JsonElement country in JSONRoot.EnumerateArray())
+            {
+                //Create the country
+                string name = country.GetProperty("Name").ToString();
+                string code = country.GetProperty("ISOCode").ToString();
+                Continent continent = Enum.Parse<Continent>(country.GetProperty("Continent").ToString());
+
+                Country _country = new Country();
+                _country.Name = name;
+                _country.ISOCode = code;
+                _country.Continent = continent;
+
+                Countries.Add(_country);
+                _country = Countries.Last();
+
+                //Create the registration template
+                if(country.TryGetProperty("Registration", out JsonElement registration))
+                {
+                    string countryID = registration.GetProperty("CountryIdentifier").ToString();
+                    bool separator = Convert.ToBoolean(registration.GetProperty("Separator").ToString());
+                    string format = registration.GetProperty("Format").ToString();
+
+                    RegistrationTemplates.Add(new RegistrationTemplate(countryID, separator, format, _country));
+                }
+            }
 
             // Create a mapping of CountryCode to Country instance
             CountryMap = Countries.ToDictionary(c => c.ISOCode, c => c);
+
+            //Create a mapping of Country to Template
+            RegistrationTemplateMap = RegistrationTemplates.ToDictionary(t => t.Country, t => t);
         }
 
         /// <summary>
@@ -302,6 +339,7 @@ namespace AeroDynasty.Services
                         AircraftModel aircraftModel = new AircraftModel(
                             aircraft.GetProperty("Name").ToString(),
                             aircraft.GetProperty("Family").ToString(),
+                            new Price(Convert.ToDouble(aircraft.GetProperty("Price").ToString())),
                             Enum.Parse<AircraftType>(aircraft.GetProperty("AircraftType").ToString()),
                             Enum.Parse<EngineType>(aircraft.GetProperty("EngineType").ToString()),
                             Convert.ToInt32(aircraft.GetProperty("CruisingSpeed").ToString()),
@@ -332,13 +370,17 @@ namespace AeroDynasty.Services
         private void LoadAirliners()
         {
             Airliners = new ObservableCollection<Airliner>();
+            /*
+            RegistrationTemplate temp = RegistrationTemplateMap[Countries[0]];
+
+            Registration reg = new Registration(temp);
 
             var dum = new Airliner();
-            dum.Registration = "PH-TST";
             dum.Owner = Airlines.FirstOrDefault();
+            
             dum.Model = AircraftModels.FirstOrDefault(am => am.Name.Equals("Boeing 307 Stratoliner", StringComparison.OrdinalIgnoreCase));
 
-            Airliners.Add(dum);
+            Airliners.Add(dum); */
         }
         #endregion
 

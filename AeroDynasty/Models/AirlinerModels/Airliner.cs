@@ -1,5 +1,6 @@
 ﻿using AeroDynasty.Models.AircraftModels;
 using AeroDynasty.Models.AirlineModels;
+using AeroDynasty.Models.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace AeroDynasty.Models.AirlinerModels
 {
     public class Airliner
     {
-        public string Registration {  get; set; }
+        public Registration Registration {  get; set; }
         public AircraftModel Model {  get; set; }
         public Airline Owner { get; set; }
 

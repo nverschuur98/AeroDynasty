@@ -51,9 +51,6 @@ namespace AeroDynasty.ModelViews
 
         public GameViewModel()
         {
-
-            Registration reg = new Registration();
-
             CurrentDate = GameData.Instance.CurrentDate;
             UserData = GameData.Instance.UserData;
 

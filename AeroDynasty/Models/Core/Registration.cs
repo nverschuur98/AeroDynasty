@@ -1,58 +1,87 @@
-﻿namespace AeroDynasty.Models.Core
+﻿using AeroDynasty.Models.AirlinerModels;
+using AeroDynasty.Services;
+using System.Diagnostics.Metrics;
+
+namespace AeroDynasty.Models.Core
 {
     public class Registration
     {
-        private string _countryID {  get; set; }
-        public string Number { get; private set; }
-        private string _format { get; set; }
-        public Country Country { get; private set; }
-        public string Value {  get; private set; }
+        public int Number { get; private set; }
+        private RegistrationTemplate _template {  get; set; }
+        public Country Country { get {  return _template.Country; } }
+        public string ReturnValue { get { return returnValue(); } }
 
-        public Registration()
+        /// <summary>
+        /// Build a registration for the airliner
+        /// </summary>
+        /// <param name="country">The country the airliner is based in</param>
+        public Registration(Country country)
         {
-            _countryID = "PH";
-            _number = "";
-            _format = "AAAA";
+            _template = GetTemplateForCountry(country);
 
-            string test = "ZZZ";
-            int num = LettersToNumber(test);
-            test = NumberToLetters(num, 3);
-            
+            // Check if the GameData is ready before accessing
+            if (GameData.Instance == null || GameData.Instance.Airliners == null)
+            {
+                throw new InvalidOperationException("GameData or Airliners is not initialized.");
+            }
+
+            Number = returnNextRegistrationNumber(Country);
         }
 
-        private string returnNextRegistration()
+        /// <summary>
+        /// Build a registration for the airliner
+        /// </summary>
+        /// <param name="country">The country the airliner is based in</param>
+        /// <param name="number">The registration number</param>
+        public Registration(Country country, int number)
         {
-            string temp = _format;
-            bool letterFormat = false;
-            int length;
-            int count = 100;
+            _template = GetTemplateForCountry(country);
+            Number = number;
+        }
 
-            if (_format.Contains('A'))
+        /// <summary>
+        /// Return the registration template based on the country
+        /// </summary>
+        /// <param name="country">The country of which to get the template from</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        private RegistrationTemplate GetTemplateForCountry(Country country)
+        {
+            var templateEntry = GameData.Instance.RegistrationTemplates
+                .FirstOrDefault(reg => reg.Country == country);
+
+            if (templateEntry == null)
             {
-                letterFormat = true;
-                temp = _format.Replace('A', '0');
+                throw new Exception($"No registration template found for country: {country}");
             }
 
-            length = temp.Length;
+            return templateEntry;
+        }
 
-            count = Convert.ToInt32(temp);
-            count++;
+        /// <summary>
+        /// Based on the country, return the next available registration number
+        /// </summary>
+        /// <param name="country">Country for which to give a registration number</param>
+        /// <returns></returns>
+        private int returnNextRegistrationNumber(Country country)
+        {
+            //Set a default for if no airliner exists yet
+            int num = 1;
 
-            if (letterFormat)
+            //Check in the GameData for the specified country what the latest number is
+            if (GameData.Instance.Airliners != null && GameData.Instance.Airliners.Any())
             {
-                temp = NumberToLetters(count, length);
-            }
-            else
-            {
-                temp = count.ToString();
+                var airliners = GameData.Instance.Airliners.Where(air => air.Registration.Country == country).ToList();
+                // Proceed with your logic using airliners
 
-                for (int i = temp.Length; i < length; ++i)
-                {
-                    temp = '0' + temp;
-                }
+                int highestNumber = airliners.OrderByDescending(air => air.Registration.Number).FirstOrDefault().Registration.Number;
 
+                //Add one to the number
+                num = ++highestNumber;
             }
-            return temp;
+
+            //Return the Number value
+            return num;
         }
 
         /// <summary>
@@ -62,24 +91,41 @@
         /// <param name="length">the pattern length</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private string NumberToLetters(int number, int length)
+        private string NumberToLetters(int number)
         {
-            if (number < 1 || number > Math.Pow(26, length))
+            if (number < 1 || number > Math.Pow(26, _template.Format.Length))
             {
-                throw new ArgumentOutOfRangeException(nameof(number), $"Input must be between 1 and {Math.Pow(26, length)}.");
+                throw new ArgumentOutOfRangeException(nameof(number), $"Input must be between 1 and {Math.Pow(26, _template.Format.Length)}.");
             }
 
             number--; // Adjust to make 1 = 'A'... and not 'B'...
 
-            char[] letters = new char[length];
+            char[] letters = new char[_template.Format.Length];
 
-            for (int i = length - 1; i >= 0; i--)
+            for (int i = _template.Format.Length - 1; i >= 0; i--)
             {
                 letters[i] = (char)('A' + number % 26);
                 number /= 26;
             }
 
             return new string(letters);
+        }
+
+        /// <summary>
+        /// Convert a number representation to a string representation
+        /// </summary>
+        /// <param name="number">the value</param>
+        /// <returns></returns>
+        private string NumberToString(int number)
+        {
+            string temp = number.ToString();
+
+            for (int i = temp.Length; i < _template.Format.Length; ++i)
+            {
+                temp = "0" + temp;
+            }
+
+            return temp;
         }
 
         /// <summary>
@@ -111,11 +157,52 @@
             return result + 1;
         }
 
-
-
+        /// <summary>
+        /// Returns the registration
+        /// </summary>
+        /// <returns>String value of registration</returns>
         private string returnValue()
         {
-            return $"{_countryID}-{_number}";
+            if (_template.IsLetterFormat)
+            {
+                return $"{_template.CountryID}-{NumberToLetters(Number)}";
+            }
+            else
+            {
+                return $"{_template.CountryID}-{NumberToString(Number)}";
+            }
+        }
+    }
+
+    public class RegistrationTemplate
+    {
+        private string _countryID { get; set; }
+        private bool _separator { get; set; }
+        private string _format { get; set; }
+        private Country _country { get; set; }
+
+        public RegistrationTemplate(string countryID, bool separator, string format, Country country)
+        {
+            _countryID = countryID;
+            _separator = separator;
+            _format = format;
+            _country = country;
+        }
+
+        public Country Country  { get { return _country; } }
+        public string CountryID { get { return _countryID; } }
+        public bool Separator { get { return _separator; } }
+        public string Format { get { return _format; } }
+        public bool IsLetterFormat
+        {
+            get
+            {
+                if (_format.Contains('A'))
+                {
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }

@@ -15,7 +15,7 @@
         <ListView ItemsSource="{Binding Airliners}" Grid.Column="0" SelectedItem="{Binding SelectedAirliner}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Registration" DisplayMemberBinding="{Binding Registration}" />
+                    <GridViewColumn Header="Registration" DisplayMemberBinding="{Binding Registration.ReturnValue}" />
 
                     <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Model.Name}" />
 

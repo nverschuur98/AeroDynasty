@@ -25,6 +25,7 @@ namespace AeroDynasty.Models.AircraftModels
         public AircraftModel(
             string name, 
             string family, 
+            Price price,
             AircraftType type, 
             EngineType engineType,
             int cruisingSpeed, 
@@ -38,7 +39,7 @@ namespace AeroDynasty.Models.AircraftModels
         {
             Name = name;
             Family = family;
-            Price = new Price(100000);
+            Price = price;
             Price.calcInflation(3.0);
             Type = type;
             EngineType = engineType;
