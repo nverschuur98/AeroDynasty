@@ -74,10 +74,13 @@ namespace AeroDynasty.Models.Core
                 var airliners = GameData.Instance.Airliners.Where(air => air.Registration.Country == country).ToList();
                 // Proceed with your logic using airliners
 
-                int highestNumber = airliners.OrderByDescending(air => air.Registration.Number).FirstOrDefault().Registration.Number;
-
-                //Add one to the number
-                num = ++highestNumber;
+                if (airliners.Any())
+                {
+                    int highestNumber = airliners.OrderByDescending(air => air.Registration.Number).FirstOrDefault().Registration.Number;
+                    
+                    //Add one to the number
+                    num = ++highestNumber;
+                }
             }
 
             //Return the Number value

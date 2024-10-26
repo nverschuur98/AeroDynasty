@@ -27,7 +27,7 @@ namespace AeroDynasty.ModelViews
         }
 
         public DateTime CurrentDate;
-        public UserData UserData { get; }
+        public UserData UserData { get; set; }
 
         public string FormattedCurrentDate
         {
@@ -126,9 +126,9 @@ namespace AeroDynasty.ModelViews
                 OnPropertyChanged(nameof(FormattedCurrentDate)); // Notify that FormattedCurrentDate has changed
             }
 
-            if (e.PropertyName == nameof(GameData.UserData.Airline))
+            if (e.PropertyName == nameof(GameData.UserData))
             {
-                OnPropertyChanged(nameof(UserData.Airline)); // Notify that FormattedCurrentDate has changed
+                OnPropertyChanged(nameof(UserData)); // Notify that FormattedCurrentDate has changed
             }
         }
 

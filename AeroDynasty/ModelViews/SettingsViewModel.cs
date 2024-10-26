@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AeroDynasty.Services;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,12 +43,38 @@ namespace AeroDynasty.ModelViews
         //Setup commando handling
         private void SaveGame()
         {
-            throw new NotImplementedException();
+            //Save location
+            string location = Path.Combine(AppContext.BaseDirectory, "Saves");
+            try
+            {
+                Directory.CreateDirectory(location);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            //Save the game to the folder
+            GameData.Instance.SaveGame(Path.Combine(location, $"save.ads"));
         }
 
         private void LoadGame()
         {
-            throw new NotImplementedException();
+            //Save location
+            string location = Path.Combine(AppContext.BaseDirectory, "Saves");
+            try
+            {
+                Directory.CreateDirectory(location);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            //Save the game to the folder
+            GameData.Instance.LoadGame(Path.Combine(location, $"save.ads"));
         }
 
         private void ToggleFullScreen()

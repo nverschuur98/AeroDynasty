@@ -7,16 +7,28 @@ using AeroDynasty.Models.Core;
 using AeroDynasty.Models.AirlinerModels;
 using System.Security.Policy;
 using System.ComponentModel;
+using AeroDynasty.Models.RouteModels;
+using AeroDynasty.Services;
 
 namespace AeroDynasty.Models.AirlineModels
 {
     public class Airline : BaseModel
     {
-        public string Name { get; set; }
-        public Country Country { get; set; }
-        public List<Airliner> Fleet { get; set; }
-        //public List<Route> Routes { get; set; }
         private double _cashBalance { get; set; }
+        private string _name { get; set; }
+        public string Name {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+        public Country Country { get; set; }
+        public double Reputation { get; set; }
         public double CashBalance
         {
             get
@@ -29,7 +41,26 @@ namespace AeroDynasty.Models.AirlineModels
                 OnPropertyChanged(nameof(CashBalance));
             }
         }
-        public double Reputation { get; set; }
+        public List<Airliner> Fleet { get
+            {
+                if(GameData.Instance.Airliners != null)
+                {
+                    return new List<Airliner>(GameData.Instance.Airliners.Where(air => air.Owner == this));
+                }
+
+                return new List<Airliner>();
+            }
+        }
+        public List<Route> Routes { get
+            {
+                if (GameData.Instance.Routes != null)
+                {
+                    return new List<Route>(GameData.Instance.Routes.Where(route => route.routeOwner == this));
+                }
+
+                return new List<Route>();
+            }
+        }
 
         public Airline(string name, Country country, double cashbalance, double reputation)
         {
@@ -38,8 +69,6 @@ namespace AeroDynasty.Models.AirlineModels
             CashBalance = cashbalance;
             Reputation = reputation;
 
-            Fleet = new List<Airliner>();
-            //Routes = new List<Route>();
         }
 
         #region Cash Transactions

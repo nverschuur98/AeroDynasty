@@ -48,7 +48,7 @@ namespace AeroDynasty.Services
         public Dictionary<int, double> Inflations { get; private set; }
 
         //Game Time and state
-        public UserData UserData { get; private set; }
+        private UserData _userData { get; set; }
         private DateTime _currentDate;
         private bool _isPaused;
 
@@ -60,14 +60,10 @@ namespace AeroDynasty.Services
         private GameData()
         {
             //Load Core first
-            LoadCountries();
-            LoadInflations();
+            LoadCoreData();
 
             //Load non-change data
-            LoadAirlines();
-            LoadAirports();
-            LoadManufacturers();
-            LoadAircrafts();
+            LoadNonChangeData();
 
             //Load change data
             //THIS NEEDS TO MOVE UNTILL AFTER THE CTOR IS FULLY INITIALIZED
@@ -80,7 +76,7 @@ namespace AeroDynasty.Services
             UserData = new UserData(arl);
 
             CurrentDate = new DateTime(1946, 1, 1);
-            _isPaused = true;
+            IsPaused = true;
 
             //Bind commands
             PlayCommand = new RelayCommand(PlayGame);
@@ -88,6 +84,21 @@ namespace AeroDynasty.Services
         }
 
         #region Loading functions
+
+        private void LoadCoreData()
+        {
+            LoadCountries();
+            LoadInflations();
+        }
+
+        private void LoadNonChangeData()
+        {
+            LoadAirlines();
+            LoadAirports();
+            LoadManufacturers();
+            LoadAircrafts();
+        }
+
         /// <summary>
         /// Loading the airline data from the data files
         /// </summary>
@@ -398,6 +409,16 @@ namespace AeroDynasty.Services
             }
         }
 
+        public UserData UserData
+        {
+            get => _userData;
+            set
+            {
+                _userData = value;
+                OnPropertyChanged(nameof(UserData));
+            }
+        }
+
         public bool IsPaused
         {
             get { return _isPaused; }
@@ -449,10 +470,31 @@ namespace AeroDynasty.Services
 
         public void LoadGame(string filePath)
         {
+            //Reset the game data
+            ResetInstance();
+
             // Use GameStateManager to load the game
             GameStateManager.LoadGame(this, filePath);
         }
 
         #endregion
+
+        // Add a method to reset the singleton
+        private void ResetInstance()
+        {
+            //Reload CoreData
+            LoadCoreData();
+            LoadNonChangeData();
+
+            //Reset date
+            CurrentDate = new DateTime(1946, 1, 1);
+            IsPaused = true;
+
+            //Reset UserData
+            UserData.Airline = Airlines.Where(al => al.Name.Contains("KLM")).FirstOrDefault();
+            Routes.Clear();
+            Airliners.Clear();
+
+        }
     }
 }
