@@ -1,5 +1,6 @@
 ﻿using AeroDynasty.Models.AirlineModels;
 using AeroDynasty.Models.AirportModels;
+using AeroDynasty.Models.Core;
 
 namespace AeroDynasty.Models.RouteModels
 {
@@ -8,8 +9,7 @@ namespace AeroDynasty.Models.RouteModels
         public Airport Origin { get; set; }
         public Airport Destination { get; set; }
         public Airline routeOwner { get; set; }
-        //public Airliner assignedAirliner { get; set; }
-        public double ticketPrice { get; set; }
+        public Price ticketPrice { get; set; }
         public int flightFrequency { get; set; }
 
         public Route()
@@ -17,15 +17,16 @@ namespace AeroDynasty.Models.RouteModels
             Origin = null;
             Destination = null;
             routeOwner = null;
+            ticketPrice = null;
         }
 
-        public Route(Airport origin, Airport destination, Airline owner, double ticketprice, int flightfrequency)
+        public Route(Airport origin, Airport destination, Airline owner, Price ticketprice, int flightfrequency)
         {
             // Check if parameters are null and throw an exception if they are
             Origin = origin ?? throw new ArgumentNullException(nameof(origin), "Origin airport cannot be null.");
             Destination = destination ?? throw new ArgumentNullException(nameof(destination), "Destination airport cannot be null.");
             routeOwner = owner ?? throw new ArgumentNullException(nameof(owner), "Airline cannot be null.");
-            ticketPrice = ticketprice;
+            ticketPrice = ticketprice ?? throw new ArgumentNullException(nameof(ticketprice), "Price cannot be null.");
             flightFrequency = flightfrequency;
         }
 

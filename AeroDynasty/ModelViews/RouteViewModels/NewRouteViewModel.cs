@@ -1,6 +1,7 @@
 ﻿using AeroDynasty.Models.RouteModels;
 using AeroDynasty.Models.AirlineModels;
 using AeroDynasty.Models.AirportModels;
+using AeroDynasty.Models.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +36,7 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         private ICollectionView _airlines;
         private Airline _selectedAirline;
 
-        private double _ticketprice;
+        private Price _ticketprice;
         private int _frequency;
 
         //Commandos
@@ -52,6 +53,7 @@ namespace AeroDynasty.ModelViews.RouteViewModels
             DestinationAirports.Filter = DestinationAirportsFilter;
             DestinationAirportsEnabled = false;
 
+            Ticketprice = new Price(0);
             Airlines = CollectionViewSource.GetDefaultView(GameData.Instance.Airlines.OrderBy(Airline => Airline.Name));
 
             // Commands
@@ -173,22 +175,47 @@ namespace AeroDynasty.ModelViews.RouteViewModels
             }
         }
 
-        public double Ticketprice
+        public Price Ticketprice
         {
             get => _ticketprice;
             set
             {
                 try
                 {
-                    _ticketprice = Convert.ToDouble(value);
+                    _ticketprice = value;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    throw new Exception($"Could not convert {value} to a double");
+                    throw new Exception($"Could not convert {value} to a Price: {ex.Message}");
                 }
 
                 OnPropertyChanged(nameof(Ticketprice));
                 
+            }
+        }
+
+        public double TicketpriceAmount
+        {
+            get
+            {
+                _ticketprice ??= new Price(0); // Initialize _ticketprice if it's null
+                return _ticketprice.Amount;
+            }
+            set
+            {
+                
+                try
+                {
+                    _ticketprice ??= new Price(0); // Ensure _ticketprice is initialized before setting
+                    _ticketprice.Amount = value;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Could not convert {value} to a double: {ex.Message}");
+                }
+
+                OnPropertyChanged(nameof(TicketpriceAmount));
+
             }
         }
 
@@ -228,9 +255,9 @@ namespace AeroDynasty.ModelViews.RouteViewModels
                     }
                     
                 }
-                catch
+                catch (Exception ex)
                 {
-                    throw new Exception($"Could not convert {value} to a Route");
+                    throw new Exception($"Could not convert {value} to a Route: {ex.Message}");
                 }
 
                 OnPropertyChanged(nameof(Route));
@@ -276,6 +303,12 @@ namespace AeroDynasty.ModelViews.RouteViewModels
             if (SelectedAirline == null)
             {
                 MessageBox.Show("The selected airline cannot be empty");
+                return false;
+            }
+
+            if (Ticketprice == null)
+            {
+                MessageBox.Show("The price cannot be null");
                 return false;
             }
 

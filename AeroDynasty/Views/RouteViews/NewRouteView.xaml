@@ -27,7 +27,7 @@
             <ComboBox ItemsSource="{Binding Airlines}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAirline}"/>
 
             <TextBlock Text="Ticketprice"/>
-            <TextBox Text="{Binding Ticketprice}" />
+            <TextBox Text="{Binding TicketpriceAmount}" />
 
             <TextBlock Text="Frequency"/>
             <TextBox Text="{Binding Frequency}"/>

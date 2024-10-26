@@ -30,7 +30,7 @@
             <TextBlock Text="{Binding Route.routeOwner.Name}"/>
 
             <TextBlock Text="Ticketprice" Margin="0,10,0,0"/>
-            <TextBlock Text="{Binding Route.ticketPrice, StringFormat={}{0:F2}}" />
+            <TextBlock Text="{Binding Route.ticketPrice.Amount, StringFormat={}{0:F2}}" />
 
             <TextBlock Text="Frequency" Margin="0,10,0,0"/>
             <TextBlock Text="{Binding Route.flightFrequency}"/>

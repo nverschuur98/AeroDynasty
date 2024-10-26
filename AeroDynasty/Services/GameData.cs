@@ -209,8 +209,8 @@ namespace AeroDynasty.Services
 
 
             //Dummy routes
-            Route _route1 = new Route(_origin, _dest1, _air, 100.0, 5);
-            Route _route2 = new Route(_origin, _dest2, _air, 100.0, 5);
+            Route _route1 = new Route(_origin, _dest1, _air, new Price(100.0), 5);
+            Route _route2 = new Route(_origin, _dest2, _air, new Price(100.0), 5);
 
             Routes = new ObservableCollection<Route>();
 

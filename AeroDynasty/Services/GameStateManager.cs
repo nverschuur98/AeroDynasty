@@ -146,7 +146,7 @@ namespace AeroDynasty.Services
                         R.Origin = GameData.Instance.Airports.Where(air => air.ICAO == route.GetProperty("Origin_ICAO").ToString()).First();
                         R.Destination = GameData.Instance.Airports.Where(air => air.ICAO == route.GetProperty("Destination_ICAO").ToString()).First();
                         R.routeOwner = GameData.Instance.Airlines.Where(air => air.Name == route.GetProperty("Owner").ToString()).First();
-                        R.ticketPrice = Convert.ToDouble(route.GetProperty("TicketPrice").ToString());
+                        R.ticketPrice = new Price(Convert.ToDouble(route.GetProperty("TicketPrice").ToString()));
                         R.flightFrequency = Convert.ToInt32(route.GetProperty("FlightFrequency").ToString());
 
                         GameData.Instance.Routes.Add(R);
@@ -269,7 +269,7 @@ namespace AeroDynasty.Services
             writer.WriteString("Origin_ICAO", value.Origin.ICAO);
             writer.WriteString("Destination_ICAO", value.Destination.ICAO);
             writer.WriteString("Owner", value.routeOwner.Name);
-            writer.WriteString("TicketPrice", value.ticketPrice.ToString());
+            writer.WriteString("TicketPrice", value.ticketPrice.Amount.ToString());
             writer.WriteString("FlightFrequency", value.flightFrequency.ToString());
             writer.WriteEndObject();
         }
