@@ -137,31 +137,26 @@ namespace AeroDynasty.Services
                     throw new Exception(e.Message);
                 }
 
-                //TO EXPAND WITH FURTHER LOADING
-
-                /*
-                // Find the full Airline object from Airlines list based on AirlineName
-                if (!string.IsNullOrEmpty(value: gameState.UserData.Airline))
+                //Get the routes
+                try
                 {
-                    gameState.UserData.Airline = GameData.Instance.Airlines
-                        .FirstOrDefault(a => a.Name == gameState.UserData.AirlineName);
+                    foreach(JsonElement route in gameState.GetProperty("Routes").EnumerateArray())
+                    {
+                        Route R = new Route();
+                        R.Origin = GameData.Instance.Airports.Where(air => air.ICAO == route.GetProperty("Origin_ICAO").ToString()).First();
+                        R.Destination = GameData.Instance.Airports.Where(air => air.ICAO == route.GetProperty("Destination_ICAO").ToString()).First();
+                        R.routeOwner = GameData.Instance.Airlines.Where(air => air.Name == route.GetProperty("Owner").ToString()).First();
+                        R.ticketPrice = Convert.ToDouble(route.GetProperty("TicketPrice").ToString());
+                        R.flightFrequency = Convert.ToInt32(route.GetProperty("FlightFrequency").ToString());
+
+                        GameData.Instance.Routes.Add(R);
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
                 }
 
-                // Set the UserData in GameData to the loaded UserData
-                GameData.Instance.UserData = gameState.UserData;
-
-                // Load other game state properties if necessary
-                // e.g., GameData.Instance.Routes = new ObservableCollection<Route>(gameState.Routes);
-            }
-
-
-            if (SaveFile != null)
-            {
-                // Apply the loaded game state to the GameData instance
-                GameData.Instance.Airliners = new ObservableCollection<Airliner>(gameState.Airliners);
-                GameData.Instance.Routes = new ObservableCollection<Route>(gameState.Routes);
-                GameData.Instance.UserData = gameState.UserData;
-                GameData.Instance.CurrentDate = gameState.CurrentDate;*/
             }
         }
     }
