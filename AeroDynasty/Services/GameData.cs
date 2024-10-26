@@ -444,9 +444,11 @@ namespace AeroDynasty.Services
         {
             while (!IsPaused)
             {
-                await Task.Delay(1000); //Simulate a day per second
+                // Start the delay and calculations in parallel
+                await Task.WhenAll(Task.Delay(1000), PerformDailyCalculations());
+
+                // After the delay and calculations are complete, advance the date
                 CurrentDate = CurrentDate.AddDays(1);
-                //UpdateAirlines();
             }
         }
 
@@ -475,6 +477,64 @@ namespace AeroDynasty.Services
 
             // Use GameStateManager to load the game
             GameStateManager.LoadGame(this, filePath);
+        }
+
+        #endregion
+
+        #region Game Calculations
+        // Method to handle all daily calculations concurrently
+        private async Task PerformDailyCalculations()
+        {
+            // Run airline and inflation calculations concurrently
+            var airlineTask = CalculateAirlinesAsync();
+            var inflationTask = CalculateInflationAsync();
+
+            // Wait for both tasks to complete before advancing to the next day
+            await Task.WhenAll(airlineTask, inflationTask);
+        }
+
+        // Async method to calculate airline data
+        private async Task CalculateAirlinesAsync()
+        {
+            await Task.Run(() =>
+            {
+                // Perform complex airline calculations here
+                // Example: Update airline profits, fuel costs, etc.
+            });
+        }
+
+        // Async method to calculate inflation rates
+        private async Task CalculateInflationAsync()
+        {
+            if(GameData.Instance.CurrentDate.Month == 12 && GameData.Instance.CurrentDate.Day == 31)
+            {
+                double inflationPercentage = GameData.Instance.Inflations[GameData.Instance.CurrentDate.Year];
+
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        // Perform complex inflation calculations here
+
+                        //Calculate the inflation on route prices
+                        foreach (Route route in GameData.Instance.Routes)
+                        {
+                            route.ticketPrice.calcInflation(inflationPercentage);
+                        }
+
+                        //Calculate the inflation on aircraft prices
+                        foreach (AircraftModel aircraftModel in GameData.Instance.AircraftModels)
+                        {
+                            aircraftModel.Price.calcInflation(inflationPercentage);
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception($"Something went wrong while calculating all the inflations: {ex.Message}");
+                }
+            }
         }
 
         #endregion
