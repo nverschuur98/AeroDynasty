@@ -516,17 +516,9 @@ namespace AeroDynasty.Services
                     {
                         // Perform complex inflation calculations here
 
-                        //Calculate the inflation on route prices
-                        foreach (Route route in GameData.Instance.Routes)
-                        {
-                            route.ticketPrice.calcInflation(inflationPercentage);
-                        }
-
-                        //Calculate the inflation on aircraft prices
-                        foreach (AircraftModel aircraftModel in GameData.Instance.AircraftModels)
-                        {
-                            aircraftModel.Price.calcInflation(inflationPercentage);
-                        }
+                        CalculateAircraftInflation(inflationPercentage);
+                        CalculateRouteInflation(inflationPercentage);
+                        
                     });
                 }
                 catch (Exception ex)
@@ -534,6 +526,32 @@ namespace AeroDynasty.Services
 
                     throw new Exception($"Something went wrong while calculating all the inflations: {ex.Message}");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Calculate the inflation for all route models
+        /// </summary>
+        /// <param name="inflationPercentage">The inflation percentage</param>
+        public void CalculateRouteInflation(double inflationPercentage)
+        {
+            //Calculate the inflation on route prices
+            foreach (Route route in GameData.Instance.Routes)
+            {
+                route.ticketPrice.calcInflation(inflationPercentage);
+            }
+        }
+
+        /// <summary>
+        /// Calculate the inflation for all aircraft models
+        /// </summary>
+        /// <param name="inflationPercentage">The inflation percentage</param>
+        public void CalculateAircraftInflation(double inflationPercentage)
+        {
+            //Calculate the inflation on aircraft prices
+            foreach (AircraftModel aircraftModel in GameData.Instance.AircraftModels)
+            {
+                aircraftModel.Price.calcInflation(inflationPercentage);
             }
         }
 

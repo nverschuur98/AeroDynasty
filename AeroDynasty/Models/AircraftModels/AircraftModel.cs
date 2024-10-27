@@ -40,7 +40,6 @@ namespace AeroDynasty.Models.AircraftModels
             Name = name;
             Family = family;
             Price = price;
-            Price.calcInflation(3.0);
             Type = type;
             EngineType = engineType;
             CruisingSpeed = cruisingSpeed;

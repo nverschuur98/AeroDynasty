@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 using AeroDynasty.Models.AircraftModels;
 using AeroDynasty.Enums;
 using AeroDynasty.Views;
+using System.Xml.Serialization;
 
 namespace AeroDynasty.Services
 {
@@ -87,6 +88,7 @@ namespace AeroDynasty.Services
                 {
                     // Assign deserialized date
                     GameData.Instance.CurrentDate = Convert.ToDateTime(gameState.GetProperty("CurrentDate").GetDateTime());
+
                 }
                 catch (Exception e)
                 {
@@ -157,9 +159,35 @@ namespace AeroDynasty.Services
                     throw new Exception(e.Message);
                 }
 
+                //Run a correction on all the inflation affected items
+                InflationCorrection();
+            }
+        }
+
+        /// <summary>
+        /// Calculate the inflation affected prices
+        /// </summary>
+        private static void InflationCorrection()
+        {
+            double inflation = 1;
+            double inflationPercentage = 1;
+
+
+            for(int y = 1946; y < GameData.Instance.CurrentDate.Year; y++)
+            {
+                inflation *= ((100 + GameData.Instance.Inflations[y]) / 100.0);
+            }
+
+            inflationPercentage = (inflation * 100) - 100;
+
+            if(inflationPercentage != 1)
+            {
+                GameData.Instance.CalculateAircraftInflation(inflationPercentage);
             }
         }
     }
+
+
 
     #region Custom Serializers
 
