@@ -12,11 +12,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <GroupBox Padding="0" Margin="10,10,0,10">
+        <GroupBox Padding="0" Grid.Column="0" Margin="10,10,0,10">
             <GroupBox.Header>
                 <Label Content="Manufacturers" FontWeight="Bold"/>
             </GroupBox.Header>
-            <ListView ItemsSource="{Binding Manufacturers}" Grid.Column="0" SelectedItem="{Binding SelectedManufacturer}" MouseDoubleClick="NavigateManufacturerClick" BorderThickness="0">
+            <ListView ItemsSource="{Binding Manufacturers}" SelectedItem="{Binding SelectedManufacturer}" MouseDoubleClick="NavigateManufacturerClick" BorderThickness="0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="Auto"/>

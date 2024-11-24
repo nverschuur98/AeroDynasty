@@ -8,34 +8,42 @@
              d:DesignHeight="450" d:DesignWidth="300" d:Background="white">
     <Grid Margin="10,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
-        <!-- Header -->
-        <TextBlock Text="New Route" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
+        <GroupBox Grid.Row="0">
+            <GroupBox.Header>
+                <Label Content="{Binding PageTitle}" FontWeight="Bold"/>
+            </GroupBox.Header>
+            <StackPanel>
+                <TextBlock Text="Origin Airport" FontWeight="SemiBold"/>
+                <ComboBox ItemsSource="{Binding OriginAirports}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedOriginAirport}"/>
 
-        <StackPanel Grid.Row="1">
-            <TextBlock Text="Origin Airport"/>
-            <ComboBox ItemsSource="{Binding OriginAirports}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedOriginAirport}"/>
+                <TextBlock Text="Destination Airport" FontWeight="SemiBold"/>
+                <ComboBox ItemsSource="{Binding DestinationAirports}" IsEnabled="{Binding DestinationAirportsEnabled}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDestinationAirport}"/>
 
-            <TextBlock Text="Destination Airport"/>
-            <ComboBox ItemsSource="{Binding DestinationAirports}" IsEnabled="{Binding DestinationAirportsEnabled}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDestinationAirport}"/>
+                <TextBlock Text="Airline" FontWeight="SemiBold"/>
+                <ComboBox ItemsSource="{Binding Airlines}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAirline}"/>
 
-            <TextBlock Text="Airline"/>
-            <ComboBox ItemsSource="{Binding Airlines}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAirline}"/>
+                <TextBlock Text="Ticketprice" FontWeight="SemiBold"/>
+                <TextBox Text="{Binding TicketpriceAmount}" />
 
-            <TextBlock Text="Ticketprice"/>
-            <TextBox Text="{Binding TicketpriceAmount}" />
+                <TextBlock Text="Frequency" FontWeight="SemiBold"/>
+                <TextBox Text="{Binding Frequency}"/>
+            </StackPanel>
+        </GroupBox>
 
-            <TextBlock Text="Frequency"/>
-            <TextBox Text="{Binding Frequency}"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Content="Save" Command="{Binding ButtonSaveCommand}"/>
-            <Button Content="Cancel" Command="{Binding ButtonCancelCommand}"/>
-        </StackPanel>
+        <GroupBox Grid.Row="1">
+            <GroupBox.Header>
+                <Label Content="Options" FontWeight="Bold"/>
+            </GroupBox.Header>
+            
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="2">
+                <Button Content="Save" Command="{Binding ButtonSaveCommand}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,5,0"/>
+                <Button Content="Cancel" Command="{Binding ButtonCancelCommand}" Style="{StaticResource ButtonStyle}" Visibility="Visible" Margin="0,0,5,0"/>
+                <Button Content="Delete" Command="{Binding ButtonDeleteCommand}" Style="{StaticResource ButtonStyle}" Visibility="{Binding ButtonDeleteVisible}"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </UserControl>

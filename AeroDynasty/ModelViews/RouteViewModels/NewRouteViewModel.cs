@@ -42,6 +42,7 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         //Commandos
         public ICommand ButtonSaveCommand { get; private set; }
         public ICommand ButtonCancelCommand { get; private set; }
+        public ICommand ButtonDeleteCommand { get; private set; }
 
         #endregion
 
@@ -59,6 +60,7 @@ namespace AeroDynasty.ModelViews.RouteViewModels
             // Commands
             ButtonSaveCommand = new RelayCommand(ButtonSave);
             ButtonCancelCommand = new RelayCommand(ButtonCancel);
+            ButtonDeleteCommand = new RelayCommand(ButtonDelete);
         }
 
         // Constructor for creating a new route
@@ -74,7 +76,7 @@ namespace AeroDynasty.ModelViews.RouteViewModels
             _routesViewModel = routesViewModel;
 
             InitializeViewModel();
-
+            
             Route = _referenceRoute = route;
 
             // If route is not null, it's an edit mode
@@ -85,6 +87,36 @@ namespace AeroDynasty.ModelViews.RouteViewModels
         #region Construction of variables
 
         //Setup public variables to local
+        public string PageTitle
+        {
+            get
+            {
+                if (isEdit)
+                {
+                    return "Edit Route: " + Route.name;
+                }
+                else
+                {
+                    return "New Route";
+                }
+            }
+        }
+
+        public string ButtonDeleteVisible
+        {
+            get
+            {
+                if (isEdit)
+                {
+                    return "Visible";
+                }
+                else
+                {
+                    return "Hidden";
+                }
+            }
+        }
+
         public ICollectionView OriginAirports
         {
             get => _originAirports;
@@ -280,6 +312,15 @@ namespace AeroDynasty.ModelViews.RouteViewModels
             _routesViewModel.CurrentDetailViewModel = null;
         }
 
+        private void ButtonDelete()
+        {
+            if (DeleteRoute())
+            {
+                _routesViewModel.Routes.Refresh();
+                _routesViewModel.CurrentDetailViewModel = null;
+            }
+        }
+
         #endregion
 
         #region Functions
@@ -341,6 +382,24 @@ namespace AeroDynasty.ModelViews.RouteViewModels
                 MessageBox.Show(ex.Message);
                 return false;
             }
+            return true;
+        }
+
+        /// <summary>
+        /// Try to delete the route
+        /// </summary>
+        /// <returns></returns>
+        private bool DeleteRoute()
+        {
+            try
+            {
+                Route.deleteRoute();
+            }
+            catch
+            {
+                return false;
+            }
+
             return true;
         }
         //Public functions

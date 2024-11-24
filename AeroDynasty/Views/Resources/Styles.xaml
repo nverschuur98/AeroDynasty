@@ -1,16 +1,21 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!-- Primary Color -->
+    <SolidColorBrush x:Key="PrimaryColor" Color="#3498db" />
+    <SolidColorBrush x:Key="BackgroundColor" Color="#ecf0f1" />
+    <SolidColorBrush x:Key="DarkBlueColor" Color="#2c3e50" />
+    
     <!-- Window Style -->
     <Style x:Key="MainWindowStyle" TargetType="Window">
-        <Setter Property="Background" Value="#ecf0f1"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="14"/>
     </Style>
 
     <!-- Header Button Style -->
     <Style x:Key="HeaderButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="#3498db"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="Margin" Value="5,0,0,0"/>
@@ -20,7 +25,48 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
-                            Padding="{TemplateBinding Padding}">
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Header Button Style -->
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="10,3"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}" CornerRadius="2">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Header Button Style -->
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10,3"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                    Padding="{TemplateBinding Padding}" CornerRadius="2">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -30,12 +76,13 @@
 
     <!-- Header Button Style -->
     <Style x:Key="PlayButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="#3498db"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Margin" Value="2,0,2,0"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

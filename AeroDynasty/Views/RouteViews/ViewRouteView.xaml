@@ -8,36 +8,44 @@
              d:DesignHeight="450" d:DesignWidth="250" d:Background="white">
     <Grid Margin="10,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="auto">
-            <TextBlock Text="View Route " FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
-            <TextBlock Text="{Binding Route.name}" FontSize="14" FontWeight="Normal" Margin="0,0,0,10" Grid.Row="0" VerticalAlignment="Center" />
-        </StackPanel>
-        
-        <StackPanel Grid.Row="1">
-            <TextBlock Text="Origin Airport"/>
-            <TextBlock Text="{Binding Route.Origin.ICAO_Name}"/>
+        <GroupBox Grid.Row="0">
+            <GroupBox.Header>
+                <Label Content="{Binding Route.name, StringFormat='View Route: {0}'}" FontWeight="Bold" />
+            </GroupBox.Header>
+            
+            <StackPanel>
+                <TextBlock Text="Origin Airport" FontWeight="SemiBold"/>
+                <TextBlock Text="{Binding Route.Origin.ICAO_Name}"/>
 
-            <TextBlock Text="Destination Airport" Margin="0,10,0,0"/>
-            <TextBlock Text="{Binding Route.Destination.ICAO_Name}"/>
+                <TextBlock Text="Destination Airport" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Route.Destination.ICAO_Name}"/>
 
-            <TextBlock Text="Airline" Margin="0,10,0,0"/>
-            <TextBlock Text="{Binding Route.routeOwner.Name}"/>
+                <TextBlock Text="Route Distance" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Route.routeDistance, StringFormat='{}{0:F2} km'}"/>
 
-            <TextBlock Text="Ticketprice" Margin="0,10,0,0"/>
-            <TextBlock Text="{Binding Route.ticketPrice.Amount, StringFormat={}{0:F2}}" />
+                <TextBlock Text="Airline" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Route.routeOwner.Name}"/>
 
-            <TextBlock Text="Frequency" Margin="0,10,0,0"/>
-            <TextBlock Text="{Binding Route.flightFrequency}"/>
-        </StackPanel>
+                <TextBlock Text="Ticketprice" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Route.ticketPrice.Amount, StringFormat={}{0:F2}}" />
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Content="Edit" Command="{Binding ButtonEditCommand}"/>
-        </StackPanel>
+                <TextBlock Text="Frequency" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Route.flightFrequency}"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1">
+            <GroupBox.Header>
+                <Label Content="Options" FontWeight="Bold" />
+            </GroupBox.Header>
+            
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="2">
+                <Button Content="Edit" Command="{Binding ButtonEditCommand}" Style="{StaticResource ButtonStyle}"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </UserControl>

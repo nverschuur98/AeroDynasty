@@ -59,6 +59,9 @@ namespace AeroDynasty.Services
         //Private Constructor
         private GameData()
         {
+            //Set start date
+            CurrentDate = new DateTime(1946, 1, 1);
+
             //Load Core first
             LoadCoreData();
 
@@ -75,7 +78,6 @@ namespace AeroDynasty.Services
 
             UserData = new UserData(arl);
 
-            CurrentDate = new DateTime(1946, 1, 1);
             IsPaused = true;
 
             //Bind commands
@@ -323,6 +325,27 @@ namespace AeroDynasty.Services
             Manufacturers = new ObservableCollection<Manufacturer>(manufacturers);
         }
 
+        private AircraftModel LoadAircraftFromJson(JsonElement aircraft, Manufacturer manufacturer)
+        {
+            //Create a new aircraftModel and set the correct properties
+            AircraftModel aircraftModel = new AircraftModel(
+                aircraft.GetProperty("Name").ToString(),
+                aircraft.GetProperty("Family").ToString(),
+                new Price(Convert.ToDouble(aircraft.GetProperty("Price").ToString())),
+                Enum.Parse<AircraftType>(aircraft.GetProperty("AircraftType").ToString()),
+                Enum.Parse<EngineType>(aircraft.GetProperty("EngineType").ToString()),
+                Convert.ToInt32(aircraft.GetProperty("CruisingSpeed").ToString()),
+                Convert.ToInt32(aircraft.GetProperty("maxPax").ToString()),
+                Convert.ToInt32(aircraft.GetProperty("maxCargo").ToString()),
+                Convert.ToInt32(aircraft.GetProperty("maxRange").ToString()),
+                Convert.ToInt32(aircraft.GetProperty("minRunwayLength").ToString()),
+                manufacturer,
+                Convert.ToDateTime(aircraft.GetProperty("IntroductionDate").ToString()),
+                Convert.ToDateTime(aircraft.GetProperty("RetirementDate").ToString()));
+
+            return aircraftModel;
+        }
+
         /// <summary>
         /// Loading the aircraft data from the data files
         /// </summary>
@@ -346,24 +369,13 @@ namespace AeroDynasty.Services
                 {
                     foreach (JsonElement aircraft in aircraftsElement.EnumerateArray())
                     {
-                        //Create a new aircraftModel and set the correct properties
-                        AircraftModel aircraftModel = new AircraftModel(
-                            aircraft.GetProperty("Name").ToString(),
-                            aircraft.GetProperty("Family").ToString(),
-                            new Price(Convert.ToDouble(aircraft.GetProperty("Price").ToString())),
-                            Enum.Parse<AircraftType>(aircraft.GetProperty("AircraftType").ToString()),
-                            Enum.Parse<EngineType>(aircraft.GetProperty("EngineType").ToString()),
-                            Convert.ToInt32(aircraft.GetProperty("CruisingSpeed").ToString()),
-                            Convert.ToInt32(aircraft.GetProperty("maxPax").ToString()),
-                            Convert.ToInt32(aircraft.GetProperty("maxCargo").ToString()),
-                            Convert.ToInt32(aircraft.GetProperty("maxRange").ToString()),
-                            Convert.ToInt32(aircraft.GetProperty("minRunwayLength").ToString()),
-                            Manufacturer,
-                            Convert.ToDateTime(aircraft.GetProperty("IntroductionDate").ToString()),
-                            Convert.ToDateTime(aircraft.GetProperty("RetirementDate").ToString()));
+                        if (Convert.ToDateTime(aircraft.GetProperty("IntroductionDate").ToString()) <= CurrentDate)
+                        {
+                            AircraftModel aircraftModel = LoadAircraftFromJson(aircraft, Manufacturer);
 
-                        //Add the model to the aircrafts list
-                        aircrafts.Add(aircraftModel);
+                            //Add the model to the aircrafts list
+                            aircrafts.Add(aircraftModel);
+                        }
                     }
                 }
 
@@ -488,6 +500,7 @@ namespace AeroDynasty.Services
             // Run airline and inflation calculations concurrently
             var airlineTask = CalculateAirlinesAsync();
             var inflationTask = CalculateInflationAsync();
+            var newAircraftsTask = CheckNewAircraftsAsync();
 
             // Wait for both tasks to complete before advancing to the next day
             await Task.WhenAll(airlineTask, inflationTask);
@@ -529,6 +542,35 @@ namespace AeroDynasty.Services
             }
         }
 
+        private async Task CheckNewAircraftsAsync()
+        {
+            string JSONString = await File.ReadAllTextAsync("Assets/ManufacturerData.json");
+            JsonDocument JSONDoc = JsonDocument.Parse(JSONString);
+            JsonElement JSONRoot = JSONDoc.RootElement;
+
+            //Loop trough all the manufacturers and process the aircrafts
+            foreach (JsonElement manufacturer in JSONRoot.EnumerateArray())
+            {
+                // Use LINQ to find the manufacturer by name
+                Manufacturer Manufacturer = Manufacturers.FirstOrDefault(m => m.Name.Equals(manufacturer.GetProperty("Name").ToString(), StringComparison.OrdinalIgnoreCase));
+
+                // Check if the Aircrafts property exists and is an array
+                if (manufacturer.TryGetProperty("Aircrafts", out JsonElement aircraftsElement) && aircraftsElement.ValueKind == JsonValueKind.Array)
+                {
+                    foreach (JsonElement aircraft in aircraftsElement.EnumerateArray())
+                    {
+                        if (Convert.ToDateTime(aircraft.GetProperty("IntroductionDate").ToString()) == CurrentDate && (!GameData.Instance.AircraftModels.Any(am => am.Name == aircraft.GetProperty("Name").ToString())))
+                        {
+                            AircraftModel aircraftModel = LoadAircraftFromJson(aircraft, Manufacturer);
+
+                            //Add the model to the aircrafts list
+                            GameData.Instance.AircraftModels.Add(aircraftModel);
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Calculate the inflation for all route models
         /// </summary>
@@ -560,19 +602,18 @@ namespace AeroDynasty.Services
         // Add a method to reset the singleton
         private void ResetInstance()
         {
+            //Reset date
+            CurrentDate = new DateTime(1946, 1, 1);
+            IsPaused = true;
+            Routes.Clear();
+            Airliners.Clear();
+
             //Reload CoreData
             LoadCoreData();
             LoadNonChangeData();
 
-            //Reset date
-            CurrentDate = new DateTime(1946, 1, 1);
-            IsPaused = true;
-
             //Reset UserData
             UserData.Airline = Airlines.Where(al => al.Name.Contains("KLM")).FirstOrDefault();
-            Routes.Clear();
-            Airliners.Clear();
-
         }
     }
 }

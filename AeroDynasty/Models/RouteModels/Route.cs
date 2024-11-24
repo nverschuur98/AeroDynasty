@@ -1,6 +1,9 @@
 ﻿using AeroDynasty.Models.AirlineModels;
 using AeroDynasty.Models.AirportModels;
 using AeroDynasty.Models.Core;
+using AeroDynasty.Services;
+using System.Diagnostics;
+using System.Windows.Documents;
 
 namespace AeroDynasty.Models.RouteModels
 {
@@ -48,8 +51,51 @@ namespace AeroDynasty.Models.RouteModels
         /// </summary>
         public string name { get
             {
-                return Origin.ICAO + " - " + Destination.ICAO; 
+                try
+                {
+                    return Origin.ICAO + " - " + Destination.ICAO;
+                }
+                catch(Exception ex)
+                {
+                    Trace.TraceWarning($"Could not retrieve route name. {this}");
+                    Trace.TraceWarning(ex.Message);
+                    Trace.TraceInformation(ex.StackTrace);
+                    return " - ";
+                }
             } 
+        }
+
+        /// <summary>
+        /// Returns the route distance in km based on the origin to destination
+        /// </summary>
+        public double routeDistance
+        {
+            get
+            {
+                return GeoUtilities.CalculateDistance(Origin.Coordinates, Destination.Coordinates);
+            }
+        }
+
+        /// <summary>
+        /// Delete this route from the routes collections.
+        /// </summary>
+        public void deleteRoute()
+        {
+            try
+            {
+                var collection = GameData.Instance.Routes;
+
+                //Make sure the route exists before deleting it.
+                if (collection != null && collection.Contains(this))
+                {
+                    collection.Remove(this);
+                }
+            }catch(Exception ex) {
+                Trace.WriteLine($"Could not delete route {this.name}");
+                Trace.TraceWarning(ex.Message);
+                Trace.TraceWarning(ex.StackTrace);
+            }
+            
         }
 
     }
