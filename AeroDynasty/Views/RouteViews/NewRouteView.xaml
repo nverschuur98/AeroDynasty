@@ -16,7 +16,8 @@
             <GroupBox.Header>
                 <Label Content="{Binding PageTitle}" FontWeight="Bold"/>
             </GroupBox.Header>
-            <StackPanel>
+            
+            <StackPanel Margin="2">
                 <TextBlock Text="Origin Airport" FontWeight="SemiBold"/>
                 <ComboBox ItemsSource="{Binding OriginAirports}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedOriginAirport}"/>
 

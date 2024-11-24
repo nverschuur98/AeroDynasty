@@ -33,7 +33,7 @@
         </Setter>
     </Style>
 
-    <!-- Header Button Style -->
+    <!-- Button Style -->
     <Style x:Key="ButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="LightGray"/>
         <Setter Property="Foreground" Value="Black"/>
@@ -53,7 +53,7 @@
         </Setter>
     </Style>
 
-    <!-- Header Button Style -->
+    <!-- Primary Button Style -->
     <Style x:Key="PrimaryButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
         <Setter Property="Foreground" Value="White"/>
@@ -74,7 +74,7 @@
         </Setter>
     </Style>
 
-    <!-- Header Button Style -->
+    <!-- Play Button Style -->
     <Style x:Key="PlayButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
         <Setter Property="Foreground" Value="White"/>
@@ -101,6 +101,27 @@
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="Margin" Value="5,0,0,0"/>
         <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style x:Key="FilterInputStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Cursor" Value="IBeam"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border 
+                    Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="2" Padding="0">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

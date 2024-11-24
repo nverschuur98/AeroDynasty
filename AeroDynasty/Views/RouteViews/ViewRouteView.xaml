@@ -17,7 +17,7 @@
                 <Label Content="{Binding Route.name, StringFormat='View Route: {0}'}" FontWeight="Bold" />
             </GroupBox.Header>
             
-            <StackPanel>
+            <StackPanel Margin="2">
                 <TextBlock Text="Origin Airport" FontWeight="SemiBold"/>
                 <TextBlock Text="{Binding Route.Origin.ICAO_Name}"/>
 

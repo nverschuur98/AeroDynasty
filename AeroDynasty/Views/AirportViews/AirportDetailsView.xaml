@@ -12,33 +12,38 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button Content="Back" FontSize="14" Command="{Binding NavigateAirportsCommand}" Background="{x:Null}" Foreground="DarkSlateBlue" BorderThickness="0"/>
+            <Button Content="Back" Command="{Binding NavigateAirportsCommand}" Background="{x:Null}" Foreground="DarkSlateBlue" BorderThickness="0"/>
             <TextBlock Text=" > " VerticalAlignment="Center" />
-            <TextBlock Text="{Binding SelectedAirport.Codes}" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding SelectedAirport.Codes}" VerticalAlignment="Center"/>
         </StackPanel>
 
-        <Grid Grid.Row="1" Margin="0,10,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical">
-                <TextBlock Text="Airport Details" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="Name:" FontWeight="Bold"/>
-                <TextBlock Text="{Binding SelectedAirport.Name}" />
+        <GroupBox Grid.Row="1">
+            <GroupBox.Header>
+                <Label Content="Airport Details" FontWeight="Bold"/>
+            </GroupBox.Header>
+            
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+                    <TextBlock Text="Name:" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding SelectedAirport.Name}" />
 
-                <TextBlock Text="IATA Code:" FontWeight="Bold" Margin="0,10,0,0"/>
-                <TextBlock Text="{Binding SelectedAirport.IATA}" />
+                    <TextBlock Text="IATA Code:" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    <TextBlock Text="{Binding SelectedAirport.IATA}" />
 
-                <TextBlock Text="ICAO Code:" FontWeight="Bold" Margin="0,10,0,0"/>
-                <TextBlock Text="{Binding SelectedAirport.ICAO}" />
+                    <TextBlock Text="ICAO Code:" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    <TextBlock Text="{Binding SelectedAirport.ICAO}" />
 
-                <TextBlock Text="Country:" FontWeight="Bold" Margin="0,10,0,0"/>
-                <TextBlock Text="{Binding SelectedAirport.Country.Name}" />
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <TextBlock Text="This is where the map will be"/>
-            </StackPanel>
-        </Grid>
+                    <TextBlock Text="Country:" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    <TextBlock Text="{Binding SelectedAirport.Country.Name}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="This is where the map will be"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

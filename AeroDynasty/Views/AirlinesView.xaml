@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AeroDynasty.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
     <Grid>
         <!-- Define two rows: one for the header and one for the ListBox -->
         <Grid.RowDefinitions>
@@ -19,21 +19,31 @@
         <!-- Header -->
         <TextBlock Text="Airlines" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
 
-        <!-- Searchbar -->
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
-            <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"  FontSize="14"/>
-            <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"  FontSize="14"/>
-        </StackPanel>
+        <GroupBox Grid.Row="1">
+            <GroupBox.Header>
+                <Label Content="Filter Options" FontWeight="Bold"/>
+            </GroupBox.Header>
+            <!-- Searchbar -->
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="2">
+                <TextBlock Text="Search:" Margin="0,0,5,0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource FilterInputStyle}"/>
+            </StackPanel>
+        </GroupBox>
 
-        <!-- DataGrid in the second row to take up all available space -->
-        <ListView ItemsSource="{Binding FilteredAirlines}" Grid.Row="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Reputation" DisplayMemberBinding="{Binding Reputation}" />
-                    <GridViewColumn Header="Coutry" DisplayMemberBinding="{Binding Country.Name}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <GroupBox Grid.Row="2">
+            <GroupBox.Header>
+                <Label Content="Airlines" FontWeight="Bold"/>
+            </GroupBox.Header>
+            <!-- DataGrid in the second row to take up all available space -->
+            <ListView ItemsSource="{Binding FilteredAirlines}" BorderThickness="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Reputation" DisplayMemberBinding="{Binding Reputation}" />
+                        <GridViewColumn Header="Coutry" DisplayMemberBinding="{Binding Country.Name}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
     </Grid>
 </UserControl>

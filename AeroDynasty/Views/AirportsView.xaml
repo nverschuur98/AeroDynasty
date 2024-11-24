@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AeroDynasty.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="White">
     <Grid>
         <!-- Define two rows: one for the header and one for the ListBox -->
         <Grid.RowDefinitions>
@@ -20,38 +20,50 @@
         <TextBlock Text="Airports" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0" />
 
         <!-- Searchbar -->
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
-            <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0"  FontSize="14"/>
-            <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" FontSize="14"/>
-        </StackPanel>
-
-        <ListView ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" Grid.Row="2">
-            <ListView.Resources>
-                <Style TargetType="ListViewItem">
-                    <EventSetter Event="MouseDoubleClick" Handler="NavigateAirportDetailsClick" />
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.Resources>
+        <GroupBox Grid.Row="1">
+            <GroupBox.Header>
+                <Label Content="Filter Options" FontWeight="Bold"/>
+            </GroupBox.Header>
             
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto" />
-                    <GridViewColumn Header="IATA" DisplayMemberBinding="{Binding IATA}" Width="auto" />
-                    <GridViewColumn Header="ICAO" DisplayMemberBinding="{Binding ICAO}" Width="auto" />
-                    <GridViewColumn Header="Country">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border BorderThickness="1" BorderBrush="DarkSlateGray" CornerRadius="2">
-                                        <Image Source="{Binding Path=Country.FlagPath}" Stretch="Fill" Height="15" Width="30" />
-                                    </Border>
-                                    <TextBlock Text="{Binding Country.Name}" Margin="5,0,0,0"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="SemiBold"/>
+                <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource FilterInputStyle}" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2">
+            <GroupBox.Header>
+                <Label Content="Airports" FontWeight="Bold"/>
+            </GroupBox.Header>
+            
+            <ListView ItemsSource="{Binding FilteredAirports}" SelectedItem="{Binding SelectedAirport}" Grid.Row="2" BorderThickness="0">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="MouseDoubleClick" Handler="NavigateAirportDetailsClick" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.Resources>
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="auto" />
+                        <GridViewColumn Header="IATA" DisplayMemberBinding="{Binding IATA}" Width="auto" />
+                        <GridViewColumn Header="ICAO" DisplayMemberBinding="{Binding ICAO}" Width="auto" />
+                        <GridViewColumn Header="Country">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border BorderThickness="1" BorderBrush="DarkSlateGray" CornerRadius="2">
+                                            <Image Source="{Binding Path=Country.FlagPath}" Stretch="Fill" Height="15" Width="30" />
+                                        </Border>
+                                        <TextBlock Text="{Binding Country.Name}" Margin="5,0,0,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
     </Grid>
 </UserControl>
