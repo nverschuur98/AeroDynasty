@@ -2,6 +2,7 @@
 using AeroDynasty.Models.AirportModels;
 using AeroDynasty.Models.Core;
 using AeroDynasty.Services;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Documents;
 
@@ -14,6 +15,7 @@ namespace AeroDynasty.Models.RouteModels
         public Airline routeOwner { get; set; }
         public Price ticketPrice { get; set; }
         public int flightFrequency { get; set; }
+        public ObservableCollection<FlightSchedule> scheduledFlights { get; set; }
 
         public Route()
         {
@@ -21,6 +23,7 @@ namespace AeroDynasty.Models.RouteModels
             Destination = null;
             routeOwner = null;
             ticketPrice = null;
+            scheduledFlights = new ObservableCollection<FlightSchedule>();
         }
 
         public Route(Airport origin, Airport destination, Airline owner, Price ticketprice, int flightfrequency)
@@ -31,6 +34,7 @@ namespace AeroDynasty.Models.RouteModels
             routeOwner = owner ?? throw new ArgumentNullException(nameof(owner), "Airline cannot be null.");
             ticketPrice = ticketprice ?? throw new ArgumentNullException(nameof(ticketprice), "Price cannot be null.");
             flightFrequency = flightfrequency;
+            scheduledFlights = new ObservableCollection<FlightSchedule>();
         }
 
         /// <summary>

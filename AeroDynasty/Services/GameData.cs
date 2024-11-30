@@ -55,6 +55,7 @@ namespace AeroDynasty.Services
         //Commands
         public ICommand PlayCommand { get; set; }
         public ICommand PauseCommand { get; set; }
+        public ICommand TestCommand { get; set; }
 
         //Private Constructor
         private GameData()
@@ -70,8 +71,8 @@ namespace AeroDynasty.Services
 
             //Load change data
             //THIS NEEDS TO MOVE UNTILL AFTER THE CTOR IS FULLY INITIALIZED
+            LoadAirliners(); 
             LoadRoutes();
-            LoadAirliners();
 
             //Init start date
             Airline arl = Airlines.Where(al => al.Name.Contains("KLM")).FirstOrDefault();
@@ -80,9 +81,11 @@ namespace AeroDynasty.Services
 
             IsPaused = true;
 
+
             //Bind commands
             PlayCommand = new RelayCommand(PlayGame);
             PauseCommand = new RelayCommand(PauseGame);
+            TestCommand = new RelayCommand(LoadTestData);
         }
 
         #region Loading functions
@@ -99,6 +102,20 @@ namespace AeroDynasty.Services
             LoadAirports();
             LoadManufacturers();
             LoadAircrafts();
+        }
+
+        private void LoadTestData()
+        {
+            //Route is there
+            //Create airliner
+            AircraftBuy air = new AircraftBuy(GameData.Instance.AircraftModels[0], 1);
+            air.BuyUserAircraftCommand.Execute(null);
+            Airliner a = GameData.Instance.Airliners[0];
+
+            //Create Flight Schedule
+            Route r = GameData.Instance.Routes[0];
+            FlightSchedule f = new FlightSchedule(r.Origin, r.Destination, (DayOfWeek)1, TimeSpan.FromHours(9), a);
+            r.scheduledFlights.Add(f);
         }
 
         /// <summary>

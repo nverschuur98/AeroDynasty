@@ -34,6 +34,7 @@
                     
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="Play" Command="{Binding PlayCommand}" Padding="5" Style="{StaticResource PlayButtonStyle}"/>
+                        <Button Content="Test" Command="{Binding TestCommand}" Padding="5" Style="{StaticResource PlayButtonStyle}"/>
                         <Button Content="Pause" Command="{Binding PauseCommand}" Padding="5" Style="{StaticResource PlayButtonStyle}"/>
                     </StackPanel>
                 </StackPanel>

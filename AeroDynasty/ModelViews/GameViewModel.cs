@@ -39,6 +39,7 @@ namespace AeroDynasty.ModelViews
         #region COMMANDOS
         public ICommand PlayCommand { get; set; }
         public ICommand PauseCommand { get; set; }
+        public ICommand TestCommand { get; set; }
 
         public ICommand NavigateHomeCommand { get; }
         public ICommand NavigateAirportsCommand { get; }
@@ -60,6 +61,7 @@ namespace AeroDynasty.ModelViews
             //Commands to handle the game
             PlayCommand = new RelayCommand(PlayGame);
             PauseCommand = new RelayCommand(PauseGame);
+            TestCommand = new RelayCommand(TestGame);
 
             //Commands to handle menu
             NavigateHomeCommand = new RelayCommand(NavigateHome);
@@ -116,6 +118,11 @@ namespace AeroDynasty.ModelViews
         private void PauseGame()
         {
             GameData.Instance.PauseCommand.Execute(null);
+        }
+
+        private void TestGame()
+        {
+            GameData.Instance.TestCommand.Execute(null);
         }
 
         // Event handler for when properties change in GameData

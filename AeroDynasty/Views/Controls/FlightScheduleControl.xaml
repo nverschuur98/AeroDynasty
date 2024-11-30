@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="AeroDynasty.Views.Controls.FlightScheduleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AeroDynasty.Views.Controls"
+             xmlns:model="clr-namespace:AeroDynasty.Models.RouteModels"
+             mc:Ignorable="d" 
+             x:Name="uc"
+             d:DesignHeight="20" d:DesignWidth="720" d:Background="white">
+    <StackPanel Orientation="Horizontal">
+        <!-- Outbound Flight Leg -->
+        <Grid Height="20" Width="{Binding OutboundGridWidth, ElementName=uc}" Margin="{Binding OutboundMargin, ElementName=uc}">
+            <Rectangle Fill="LightBlue" />
+            <TextBlock Text="{Binding FlightSchedule.Outbound.Name, ElementName=uc}" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"
+                       FontSize="9" FontWeight="SemiBold" Margin="2" Foreground="White"/>
+        </Grid>
+
+        <!-- Turnaround Time (LightCoral) -->
+        <Rectangle Height="20" Width="{Binding TurnAroundWidth, ElementName=uc}" Fill="LightCoral" Margin="0,0,0,0"/>
+
+        <!-- Inbound Flight Leg -->
+        <Grid Height="20" Width="{Binding InboundGridWidth, ElementName=uc}" Margin="0,0,0,0">
+            <Rectangle Fill="LightBlue" />
+            <TextBlock Text="{Binding FlightSchedule.Inbound.Name, ElementName=uc}" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"
+                       FontSize="9" FontWeight="SemiBold" Margin="2" Foreground="White"/>
+        </Grid>
+    </StackPanel>
+</UserControl>

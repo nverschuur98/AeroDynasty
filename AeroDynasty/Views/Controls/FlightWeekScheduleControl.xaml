@@ -1,0 +1,154 @@
+﻿<UserControl x:Class="AeroDynasty.Views.Controls.FlightWeekScheduleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AeroDynasty.Views.Controls"
+             mc:Ignorable="d" 
+             x:Name="uc"
+             d:DesignHeight="400" d:DesignWidth="800" d:Background="White">
+    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Header -->
+                <RowDefinition Height="30"/>
+                <!-- Monday -->
+                <RowDefinition Height="*"/>
+                <!-- Tuesday -->
+                <RowDefinition Height="*"/>
+                <!-- Wednesday -->
+                <RowDefinition Height="*"/>
+                <!-- Thursday -->
+                <RowDefinition Height="*"/>
+                <!-- Friday -->
+                <RowDefinition Height="*"/>
+                <!-- Saturday -->
+                <RowDefinition Height="*"/>
+                <!-- Sunday -->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!-- Header -->
+                <ColumnDefinition Width="100"/>
+                <!-- 00:00 -->
+                <ColumnDefinition Width="30" />
+                <!-- 01:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 02:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 03:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 04:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 05:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 06:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 07:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 08:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 09:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 10:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 11:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 12:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 13:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 14:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 15:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 16:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 17:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 18:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 19:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 20:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 21:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 22:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 23:00 -->
+                <ColumnDefinition Width="30"/>
+                <!-- 24:00 -->
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Time Header -->
+            <TextBlock Text="00:00" Margin="1" FontWeight="SemiBold" Grid.Column="1" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="01:00" Margin="1" FontWeight="SemiBold" Grid.Column="2" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="02:00" Margin="1" FontWeight="SemiBold" Grid.Column="3" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="03:00" Margin="1" FontWeight="SemiBold" Grid.Column="4" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="04:00" Margin="1" FontWeight="SemiBold" Grid.Column="5" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="05:00" Margin="1" FontWeight="SemiBold" Grid.Column="6" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="06:00" Margin="1" FontWeight="SemiBold" Grid.Column="7" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="07:00" Margin="1" FontWeight="SemiBold" Grid.Column="8" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="08:00" Margin="1" FontWeight="SemiBold" Grid.Column="9" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="09:00" Margin="1" FontWeight="SemiBold" Grid.Column="10" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="10:00" Margin="1" FontWeight="SemiBold" Grid.Column="11" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="11:00" Margin="1" FontWeight="SemiBold" Grid.Column="12" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="12:00" Margin="1" FontWeight="SemiBold" Grid.Column="13" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="13:00" Margin="1" FontWeight="SemiBold" Grid.Column="14" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="14:00" Margin="1" FontWeight="SemiBold" Grid.Column="15" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="15:00" Margin="1" FontWeight="SemiBold" Grid.Column="16" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="16:00" Margin="1" FontWeight="SemiBold" Grid.Column="17" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="17:00" Margin="1" FontWeight="SemiBold" Grid.Column="18" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="18:00" Margin="1" FontWeight="SemiBold" Grid.Column="19" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="19:00" Margin="1" FontWeight="SemiBold" Grid.Column="20" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="20:00" Margin="1" FontWeight="SemiBold" Grid.Column="21" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="21:00" Margin="1" FontWeight="SemiBold" Grid.Column="22" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="22:00" Margin="1" FontWeight="SemiBold" Grid.Column="23" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="23:00" Margin="1" FontWeight="SemiBold" Grid.Column="24" Grid.Row="0" FontSize="10"/>
+            <TextBlock Text="24:00" Margin="1" FontWeight="SemiBold" Grid.Column="25" Grid.Row="0" FontSize="10"/>
+
+            <!-- Day Rows -->
+            <TextBlock Text="Monday" Margin="5" FontWeight="Bold" Grid.Column="0" Grid.Row="1"/>
+            <ListView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="24" ItemsSource="{Binding MondaySchedule, ElementName=uc}" BorderThickness="0" Padding="0"  Margin="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:FlightScheduleControl FlightSchedule="{Binding}" DataContext="{Binding}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <TextBlock Text="Tuesday" Margin="5" FontWeight="Bold" Grid.Column="0" Grid.Row="2"/>
+            <ListView Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="24" ItemsSource="{Binding TuesdaySchedule, ElementName=uc}" BorderThickness="0" Padding="0"  Margin="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:FlightScheduleControl FlightSchedule="{Binding}" DataContext="{Binding}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <TextBlock Text="Wednesday" Margin="5" FontWeight="Bold" Grid.Column="0" Grid.Row="3"/>
+            <ListView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="24" ItemsSource="{Binding WednesdaySchedule, ElementName=uc}" BorderThickness="0" Padding="0"  Margin="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:FlightScheduleControl FlightSchedule="{Binding}" DataContext="{Binding}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <TextBlock Text="Thursday" Margin="5" FontWeight="Bold" Grid.Column="0" Grid.Row="4"/>
+            <Rectangle Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="24" Height="20" Fill="LightBlue" />
+
+            <TextBlock Text="Friday" Margin="5" FontWeight="Bold" Grid.Column="0" Grid.Row="5"/>
+            <Rectangle Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="24" Height="20" Fill="LightBlue" />
+
+            <TextBlock Text="Saterday" Margin="5" FontWeight="Bold" Grid.Column="0" Grid.Row="6"/>
+            <Rectangle Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="24" Height="20" Fill="LightBlue" />
+
+            <TextBlock Text="Sunday" Margin="5" FontWeight="Bold" Grid.Column="0" Grid.Row="7"/>
+            <Rectangle Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="24" Height="20" Fill="LightBlue" />
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>
